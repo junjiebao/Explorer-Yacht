@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- 首页 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- 关于我们 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/about.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 联系方式 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/contact.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 游艇分类 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/portfolio.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 环球探险游艇 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/circumnavigation.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 科考探险游艇 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/research.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 极地探险游艇 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/polar.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 远航探险游艇 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/longrange.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 短距探险游艇 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/regional.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 探险游艇知识 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/knowledge.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 游艇购买指南 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/buying-process.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 游艇购买调研问卷 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/survey.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- 博客页面 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/blog.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- 购买页面 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/buy.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- 租赁页面 -->
+    <url>
+        <loc>https://www.tanxianyouting.com/rent.html</loc>
+        <lastmod>2024-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset>

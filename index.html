@@ -34,15 +34,113 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Explorer Yacht - New Yachting FZE, LLC",
+        "url": "https://www.tanxianyouting.com",
+        "logo": "https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg",
+        "description": "专业探险游艇服务，提供环球航行、远航、科考、极地探险等各类游艇。享受豪华游艇生活，体验海上探险，实现跳岛潜水、海外度假梦想。顶级超级游艇定制与咨询。",
+        "sameAs": [
+            "https://www.tanxianyouting.com"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+971 56 101 8837",
+            "contactType": "customer service",
+            "availableLanguage": ["Chinese", "English"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "AE",
+            "addressRegion": "Dubai"
+        },
+        "foundingDate": "2020",
+        "areaServed": "Worldwide"
+    }
+    </script>
+    
+    <!-- 服务结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "探险游艇定制服务",
+        "description": "提供环球探险游艇、科考探险游艇、极地探险游艇、远航探险游艇、短距探险游艇的定制与咨询服务",
+        "provider": {
+            "@type": "Organization",
+            "name": "Explorer Yacht - New Yachting FZE, LLC"
+        },
+        "serviceType": "Yacht Building and Consulting",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "探险游艇服务目录",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "环球探险游艇定制",
+                        "description": "专为环球航行设计，配备顶级导航系统和持久续航能力"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "科考探险游艇定制",
+                        "description": "配备专业海洋研究设备，支持深海考察与科学研究"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "极地探险游艇定制",
+                        "description": "专为极地环境设计，配备破冰能力和极寒防护系统"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "远航探险游艇定制",
+                        "description": "超大燃料容量设计，配备智能能源管理系统"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "短距探险游艇定制",
+                        "description": "灵活机动的设计理念，适合近海探索与短期航行"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
     <!-- 原有的其他meta标签和link标签 -->
     <link rel="icon" type="image/webp" href="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg/r%5Bwidth%5D=32&r%5Bheight%5D=32/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.webp">
     <link rel="stylesheet" href="styles.css">
-    <!-- 预加载图片 -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-QCjC1KpA4AA">
-    <link rel="preload" as="image" href="https://images.pexels.com/photos/635705/pexels-photo-635705.jpeg">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-71NgiXcdTzE">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-dm9EHhIZm-k">
-    <link rel="preload" as="image" href="https://cdn.pixabay.com/photo/2016/11/29/13/49/yacht-1867062_1280.jpg">
+    <!-- 关键CSS预加载 -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="nav.js" as="script">
+    
+    <!-- 预加载关键图片 -->
+    <link rel="preload" as="image" href="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg" type="image/webp">
+    <link rel="preload" as="image" href="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/JAFaZjDITWumsqmF5rxU_CircumnavigationZeepard.jpg/r%5Bwidth%5D=1920/JAFaZjDITWumsqmF5rxU_CircumnavigationZeepard.webp" type="image/webp">
+    
+    <!-- DNS预解析 -->
+    <link rel="dns-prefetch" href="//cdn.boatinternational.com">
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+    
+    <!-- 预连接 -->
+    <link rel="preconnect" href="https://cdn.boatinternational.com" crossorigin>
 </head>
 <body>
     <!-- 顶部小导航 -->
@@ -80,7 +178,7 @@
     <div class="hero-section">
         <div class="video-overlay"></div>
         <!-- 添加后备背景图片 -->
-        <div class="fallback-bg" style="background-image: url('images/极地探险.jpg');"></div>
+        <div class="fallback-bg" style="background-image: url('images/极地探险.jpg');" role="img" aria-label="极地探险游艇在冰川海域航行"></div>
         <video 
             autoplay 
             muted 
@@ -658,8 +756,10 @@
                 <!-- 环球探险类 -->
                 <a href="circumnavigation.html" class="category-item">
                     <img src="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/JAFaZjDITWumsqmF5rxU_CircumnavigationZeepard.jpg/r%5Bwidth%5D=1920/JAFaZjDITWumsqmF5rxU_CircumnavigationZeepard.webp" 
-                         alt="环球探险游艇"
-                         loading="lazy">
+                         alt="环球探险游艇Zeepard正在远洋航行，展示其卓越的长航能力"
+                         loading="lazy"
+                         width="1920"
+                         height="1080">
                     <div class="category-overlay">
                         <div class="category-content">
                             <h3>CIRCUMNAVIGATION</h3>
@@ -674,8 +774,10 @@
                 <!-- 科考探险类 -->
                 <a href="research.html" class="category-item">
                     <img src="https://cdn.boatinternational.com/convert/files/2020/09/8e7967d0-fe3e-11ea-8303-279582a454db-OceanXplorer-3.jpg/r%5Bwidth%5D=1920/8e7967d0-fe3e-11ea-8303-279582a454db-OceanXplorer-3.webp" 
-                         alt="科考探险游艇"
-                         loading="lazy">
+                         alt="OceanXplorer科考探险游艇配备专业海洋研究设备进行深海考察"
+                         loading="lazy"
+                         width="1920"
+                         height="1080">
                     <div class="category-overlay">
                         <div class="category-content">
                             <h3>RESEARCH EXPLORER</h3>
@@ -849,8 +951,286 @@
     </style>
 </body>
 
-    <!-- 添加版权信息 -->
-    <footer>
-        <p>Copyright © 2020 - 2024 New Yachting FZE, LLC. All Rights Reserved.</p>
+    <!-- 统一的页脚 -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg/r%5Bwidth%5D=32&r%5Bheight%5D=32/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.webp" 
+                             alt="探险游艇" class="footer-logo">
+                        <h3>探险游艇 | Explorer Yacht</h3>
+                        <p>专业探险游艇服务，提供环球航行、远航、科考、极地探险等各类游艇定制与咨询。</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>服务项目</h4>
+                    <ul class="footer-links">
+                        <li><a href="circumnavigation.html">环球探险游艇</a></li>
+                        <li><a href="research.html">科考探险游艇</a></li>
+                        <li><a href="polar.html">极地探险游艇</a></li>
+                        <li><a href="longrange.html">远航探险游艇</a></li>
+                        <li><a href="regional.html">短距探险游艇</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="portfolio.html">游艇分类</a></li>
+                        <li><a href="knowledge.html">游艇知识</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>业务联系</h4>
+                    <ul class="footer-contact">
+                        <li><strong>新建游艇:</strong> <a href="mailto:Build@xinyouting.com">Build@xinyouting.com</a></li>
+                        <li><strong>出售游艇:</strong> <a href="mailto:listing@xinyouting.com">listing@xinyouting.com</a></li>
+                        <li><strong>托管游艇:</strong> <a href="mailto:manage@xinyouting.com">manage@xinyouting.com</a></li>
+                        <li><strong>游艇租赁:</strong> <a href="mailto:charter@xinyouting.com">charter@xinyouting.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2020 - 2025 New Yachting FZE, LLC. All Rights Reserved.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="admin-login.html" class="admin-link">管理入口</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="privacy-link">隐私政策</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="terms-link">服务条款</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <style>
+    .site-footer {
+        background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-main {
+        padding: 60px 0 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-section h3 {
+        color: #fff;
+        font-size: 1.3em;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .footer-section h4 {
+        color: #fff;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    .footer-brand {
+        max-width: 350px;
+    }
+
+    .footer-brand .footer-logo {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .footer-brand h3 {
+        margin-bottom: 15px;
+        font-size: 1.4em;
+    }
+
+    .footer-brand p {
+        color: #a0aec0;
+        line-height: 1.6;
+        font-size: 0.95em;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #a0aec0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    .footer-links a:hover {
+        color: #4299e1;
+        transform: translateX(3px);
+    }
+
+    .footer-contact {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-contact li {
+        margin-bottom: 12px;
+        color: #a0aec0;
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .footer-contact strong {
+        color: #e2e8f0;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .footer-contact a {
+        color: #4299e1;
+        text-decoration: none;
+        word-break: break-all;
+    }
+
+    .footer-contact a:hover {
+        color: #63b3ed;
+        text-decoration: underline;
+    }
+
+    .footer-bottom {
+        padding: 25px 0;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-bottom .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-bottom-left p {
+        margin: 0;
+        color: #a0aec0;
+        font-size: 0.9em;
+    }
+
+    .footer-bottom-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .admin-link,
+    .privacy-link,
+    .terms-link {
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 0.9em;
+        padding: 6px 12px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .admin-link:hover,
+    .privacy-link:hover,
+    .terms-link:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .separator {
+        color: #4a5568;
+        font-size: 0.8em;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 1024px) {
+        .footer-container {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-main {
+            padding: 40px 0 30px;
+        }
+        
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .footer-bottom .footer-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .footer-bottom-right {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .separator {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .site-footer {
+            margin-top: 60px;
+        }
+        
+        .footer-main {
+            padding: 30px 0 20px;
+        }
+        
+        .footer-container {
+            padding: 0 15px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.2em;
+        }
+        
+        .footer-section h4 {
+            font-size: 1em;
+        }
+    }
+    </style>
 </html> 
