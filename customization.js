@@ -98,6 +98,109 @@ function initGalleryFilters() {
             });
         });
     });
+
+    // 初始化视频播放功能
+    initVideoPlayback();
+}
+
+// 视频播放功能
+function initVideoPlayback() {
+    const videoItems = document.querySelectorAll('.gallery-item.video-item');
+    
+    videoItems.forEach(item => {
+        const thumbnail = item.querySelector('.video-thumbnail');
+        const playButton = item.querySelector('.play-button');
+        
+        if (thumbnail && playButton) {
+            thumbnail.addEventListener('click', () => {
+                // 获取视频URL（这里需要根据实际情况存储视频URL）
+                const videoUrl = "//player.bilibili.com/player.html?isOutside=true&aid=114290069603481&bvid=BV1WfRvYQErp&cid=29263724792&p=1";
+                
+                // 创建模态窗口
+                const modal = createVideoModal(videoUrl);
+                document.body.appendChild(modal);
+                
+                // 显示模态窗口
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.style.pointerEvents = 'auto';
+                }, 10);
+            });
+            
+            // 鼠标悬停效果
+            thumbnail.addEventListener('mouseenter', () => {
+                playButton.style.transform = 'scale(1.2)';
+                playButton.style.backgroundColor = 'rgba(66, 153, 225, 0.9)';
+            });
+            
+            thumbnail.addEventListener('mouseleave', () => {
+                playButton.style.transform = 'scale(1)';
+                playButton.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            });
+        }
+    });
+}
+
+// 创建视频模态窗口
+function createVideoModal(videoUrl) {
+    const modal = document.createElement('div');
+    modal.className = 'video-modal';
+    modal.innerHTML = `
+        <div class="video-modal-backdrop"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close">&times;</button>
+            <div class="video-modal-container">
+                <iframe src="${videoUrl}" 
+                        scrolling="no" 
+                        border="0" 
+                        frameborder="no" 
+                        framespacing="0" 
+                        allowfullscreen="true">
+                </iframe>
+            </div>
+        </div>
+    `;
+    
+    // 添加样式
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 9999;
+    `;
+    
+    // 关闭功能
+    const backdrop = modal.querySelector('.video-modal-backdrop');
+    const closeBtn = modal.querySelector('.video-modal-close');
+    
+    const closeModal = () => {
+        modal.style.opacity = '0';
+        modal.style.pointerEvents = 'none';
+        setTimeout(() => {
+            if (document.body.contains(modal)) {
+                document.body.removeChild(modal);
+            }
+        }, 300);
+    };
+    
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    
+    // ESC键关闭
+    const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', handleEsc);
+        }
+    };
+    document.addEventListener('keydown', handleEsc);
+    
+    return modal;
 }
 
 // 滚动效果
@@ -200,7 +303,7 @@ function handleSubmit(event) {
     `);
     
     // 发送邮件
-    window.location.href = `mailto:Build@xinyouting.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:BUILD@XINYOUTING.COM?subject=${subject}&body=${body}`;
     
     // 显示成功提示
     showNotification('咨询申请已提交，我们将尽快与您联系！', 'success');

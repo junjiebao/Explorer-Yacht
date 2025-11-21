@@ -1,0 +1,26 @@
+{
+  "name": "explorer-yacht",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aos-simple.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junjiebao/Explorer-Yacht.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junjiebao/Explorer-Yacht/issues"
+  },
+  "homepage": "https://github.com/junjiebao/Explorer-Yacht#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3",
+    "nodemailer": "^7.0.10"
+  }
+}
