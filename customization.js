@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroSlider();
     initGalleryFilters();
     initScrollEffects();
-    initMobileMenu();
+    // 移动端菜单由 nav.js 统一处理，此处不再调用
 });
 
 // Hero 轮播图功能
@@ -243,36 +243,6 @@ function initScrollEffects() {
             });
         }
     };
-}
-
-// 移动端菜单
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-            menuBtn.textContent = menuBtn.classList.contains('active') ? 'CLOSE' : 'MENU';
-        });
-
-        // 下拉菜单
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('a');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            
-            if (link && menu) {
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        menu.classList.toggle('active');
-                    }
-                });
-            }
-        });
-    }
 }
 
 // 表单处理

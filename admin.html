@@ -937,7 +937,17 @@ let toastTimer = null;
 // ─── 初始化 ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
     if (!token) {
-        window.location.href = '/admin-login.html';
+        window.location.href = 'admin-login.html';
+        return;
+    }
+
+    // 检查登录有效期（8 小时）
+    const loginTime = parseInt(localStorage.getItem('adminLoginTime') || '0', 10);
+    if (loginTime && Date.now() - loginTime > 8 * 60 * 60 * 1000) {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminUser');
+        localStorage.removeItem('adminLoginTime');
+        window.location.href = 'admin-login.html';
         return;
     }
 
@@ -972,6 +982,7 @@ function switchPanel(btn) {
 }
 
 // ─── 加载调研数据 ────────────────────────────────────────
+// ─── 加载调研数据（静态模式：无后端则显示空列表）──────────
 async function loadSurveys() {
     try {
         const res = await fetch('/api/admin/surveys', {
@@ -982,13 +993,12 @@ async function loadSurveys() {
         }
         const data = await res.json();
         allSurveys = Array.isArray(data) ? data : [];
-        renderStats();
-        filterTable();
     } catch (err) {
-        console.error('加载调研失败:', err);
-        showToast('加载数据失败，请刷新重试', 'error');
-        renderEmpty();
+        // 静态托管环境：无后端 API，正常显示空列表
+        allSurveys = [];
     }
+    renderStats();
+    filterTable();
 }
 
 // ─── 渲染统计 ────────────────────────────────────────────
@@ -1184,38 +1194,21 @@ function closeDrawer() {
     currentId = null;
 }
 
-// ─── 更新状态 ────────────────────────────────────────────
-async function updateStatus() {
+// ─── 更新状态（纯前端内存操作）──────────────────────────
+function updateStatus() {
     if (!currentId) return;
     const newStatus = document.getElementById('drawerStatusSelect').value;
-    try {
-        const res = await fetch(`/api/admin/surveys/${currentId}/status`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ status: newStatus })
-        });
-        if (res.ok) {
-            const item = allSurveys.find(s => String(s.id) === String(currentId));
-            if (item) item.status = newStatus;
-            renderStats();
-            filterTable();
-            openDetail(currentId); // 刷新抽屉状态
-            showToast('状态已更新');
-        } else {
-            showToast('更新失败，请重试', 'error');
-        }
-    } catch (err) {
-        showToast('网络错误', 'error');
-    }
+    const item = allSurveys.find(s => String(s.id) === String(currentId));
+    if (item) item.status = newStatus;
+    renderStats();
+    filterTable();
+    openDetail(currentId);
+    showToast('状态已更新');
 }
 
-// ─── 加载文件列表 ────────────────────────────────────────
+// ─── 加载文件列表（静态模式：无后端则显示暂无）──────────
 async function loadFiles() {
     const fileList = document.getElementById('fileList');
-    fileList.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-muted)"><span class="loading-spinner"></span>加载中…</div>`;
     try {
         const res = await fetch('/api/admin/survey-files', {
             headers: { 'Authorization': `Bearer ${token}` }
@@ -1241,7 +1234,8 @@ async function loadFiles() {
             </div>
         `).join('');
     } catch (err) {
-        fileList.innerHTML = `<div class="empty-state"><p>加载失败，请刷新重试</p></div>`;
+        // 静态托管环境：无后端 API，正常显示暂无
+        fileList.innerHTML = `<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><p>暂无数据文件</p></div>`;
     }
 }
 
@@ -1267,10 +1261,39 @@ async function downloadFile(filePath, fileName) {
     }
 }
 
-// ─── 导出 Excel ──────────────────────────────────────────
+// ─── 导出 CSV（纯前端，无需后端）────────────────────────
 function exportSurveys() {
-    window.location.href = '/api/admin/export?token=' + encodeURIComponent(token);
-    showToast('正在生成 Excel 文件…');
+    if (!allSurveys.length) {
+        showToast('暂无数据可导出', 'error');
+        return;
+    }
+    const headers = ['提交时间', '姓名', '联系方式', '地区', '预算', '状态'];
+    const statusMap = { new: '待处理', processing: '处理中', contacted: '已联系', completed: '已完成' };
+    const rows = allSurveys.map(item => {
+        const d = (() => { try { return typeof item.data === 'string' ? JSON.parse(item.data) : (item.data || {}); } catch { return {}; } })();
+        const m = { ...d, ...item };
+        const t = m.created_at || m.submitTime || m.submit_time || '';
+        const timeStr = t ? new Date(t).toLocaleString('zh-CN') : '';
+        return [
+            timeStr,
+            m.name || '',
+            m.contact || '',
+            m.region || m.location || '',
+            m.budget || '',
+            statusMap[m.status || 'new'] || '待处理'
+        ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',');
+    });
+    const csv = '\uFEFF' + headers.join(',') + '\n' + rows.join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'surveys_' + new Date().toISOString().slice(0, 10) + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(url);
+    a.remove();
+    showToast('CSV 文件已导出');
 }
 
 // ─── 刷新 ────────────────────────────────────────────────
@@ -1302,7 +1325,8 @@ function showToast(msg, type = 'success') {
 function logout() {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
-    window.location.href = '/admin-login.html';
+    localStorage.removeItem('adminLoginTime');
+    window.location.href = 'admin-login.html';
 }
 
 // ─── 移动端侧边栏 ─────────────────────────────────────────

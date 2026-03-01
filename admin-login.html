@@ -431,7 +431,14 @@
     usernameInput.addEventListener('input', clearErrors);
     passwordInput.addEventListener('input', clearErrors);
 
-    form.addEventListener('submit', async function (e) {
+    // ── 凭据配置（纯前端验证，适用于静态托管）──────────────
+    // 如需修改账号密码，直接替换下方的值
+    const ADMIN_CREDENTIALS = [
+        { username: 'admin', password: 'Explorer2026!' },
+        { username: 'newyachting', password: 'Yacht@2026' }
+    ];
+
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         clearErrors();
 
@@ -452,40 +459,37 @@
         }
         if (hasError) return;
 
-        // 发起请求
+        // 加载动画
         loginBtn.classList.add('loading');
         loginBtn.disabled = true;
 
-        try {
-            const response = await fetch('/api/admin/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
+        // 模拟验证延迟（体验更自然）
+        setTimeout(function () {
+            const matched = ADMIN_CREDENTIALS.find(
+                c => c.username === username && c.password === password
+            );
 
-            const data = await response.json();
+            if (matched) {
+                // 生成简单会话 token（时间戳 + 随机数）
+                const token = btoa(username + ':' + Date.now() + ':' + Math.random().toString(36).slice(2));
+                localStorage.setItem('adminToken', token);
+                localStorage.setItem('adminUser', username);
+                localStorage.setItem('adminLoginTime', Date.now().toString());
 
-            if (response.ok && data.token) {
-                localStorage.setItem('adminToken', data.token);
-                localStorage.setItem('adminUser', data.username || username);
-                // 短暂成功反馈后跳转
                 loginBtn.style.background = 'linear-gradient(135deg, #2f855a, #38a169)';
                 loginBtn.querySelector('.btn-text').textContent = '登录成功，跳转中…';
                 loginBtn.classList.remove('loading');
-                setTimeout(() => { window.location.href = '/admin.html'; }, 600);
+                setTimeout(function () {
+                    window.location.href = 'admin.html';
+                }, 600);
             } else {
                 loginBtn.classList.remove('loading');
                 loginBtn.disabled = false;
-                showAlert(data.error || '用户名或密码错误，请重试');
+                showAlert('用户名或密码错误，请重试');
                 passwordInput.value = '';
                 passwordInput.focus();
             }
-        } catch (err) {
-            loginBtn.classList.remove('loading');
-            loginBtn.disabled = false;
-            showAlert('网络连接失败，请检查后重试');
-            console.error('Login error:', err);
-        }
+        }, 500);
     });
 
     // Enter 键提交
