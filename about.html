@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -87,15 +87,377 @@
             </div>
         </section>
 
-        <!-- 在"我们的优势"部分前添加调研入口 -->
-        <section class="survey-entry">
-            <div class="container">
-                <a href="survey.html" class="survey-button">
-                    <span class="button-text">游艇购买调研问卷</span>
-                    <span class="button-arrow">→</span>
-                </a>
+        <!-- 需求调研问卷 -->
+        <section id="survey" style="background:#f8fafc; padding:60px 0;">
+            <div style="max-width:860px;margin:0 auto;padding:0 20px;">
+                <div style="text-align:center;margin-bottom:40px;">
+                    <h2 style="font-size:2rem;color:#1a202c;font-weight:700;margin-bottom:12px;">探险游艇需求调研</h2>
+                    <p style="color:#6b7280;font-size:1.05rem;">填写本问卷，让我们更好地了解您的航行梦想，为您量身定制最适合的方案</p>
+                </div>
+
+                <!-- 进度条 -->
+                <div id="ab-progressWrapper" style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 24px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display:flex;justify-content:space-between;font-size:0.88rem;color:#6b7280;margin-bottom:8px;">
+                        <span id="ab-stepLabel" style="font-weight:600;color:#0F4C81;">第 1 步 / 共 5 步</span>
+                        <span id="ab-stepPct" style="font-weight:600;color:#0F4C81;">0%</span>
+                    </div>
+                    <div style="height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden;">
+                        <div id="ab-progressFill" style="height:100%;background:linear-gradient(90deg,#0F4C81,#1a7fa8);border-radius:99px;transition:width 0.5s ease;width:0%;"></div>
+                    </div>
+                </div>
+
+                <style>
+                .ab-step{display:none;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:40px;margin-bottom:16px;animation:abFadeIn 0.3s ease;}
+                .ab-step.active{display:block;}
+                @keyframes abFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+                .ab-step-tag{display:inline-block;background:#ebf4ff;color:#0F4C81;font-size:0.78rem;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:99px;text-transform:uppercase;margin-bottom:10px;}
+                .ab-step h3{font-size:1.5rem;color:#1a202c;font-weight:700;margin-bottom:6px;}
+                .ab-step .ab-desc{color:#6b7280;font-size:0.95rem;margin-bottom:28px;}
+                .ab-fg{margin-bottom:22px;}
+                .ab-fg label{display:block;font-weight:600;color:#374151;margin-bottom:8px;font-size:0.93rem;}
+                .ab-fg label .ab-req{color:#e53e3e;margin-left:3px;}
+                .ab-fg label .ab-hint{font-weight:400;color:#9ca3af;font-size:0.82rem;margin-left:6px;}
+                .ab-fg input[type=text],.ab-fg input[type=email],.ab-fg input[type=tel],.ab-fg select,.ab-fg textarea{width:100%;padding:11px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:0.95rem;color:#1a202c;background:#f9fafb;outline:none;font-family:inherit;transition:border-color 0.2s,box-shadow 0.2s;box-sizing:border-box;}
+                .ab-fg input:focus,.ab-fg select:focus,.ab-fg textarea:focus{border-color:#0F4C81;background:#fff;box-shadow:0 0 0 4px rgba(15,76,129,0.1);}
+                .ab-fg textarea{resize:vertical;min-height:100px;line-height:1.6;}
+                .ab-fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;}
+                .ab-og{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+                .ab-og.cols3{grid-template-columns:repeat(3,1fr);}
+                .ab-oi{position:relative;}
+                .ab-oi input{position:absolute;opacity:0;width:0;height:0;}
+                .ab-oi label{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:10px;cursor:pointer;background:#f9fafb;transition:all 0.2s;font-weight:400;line-height:1.4;color:#374151;font-size:0.9rem;}
+                .ab-oi label .ico{font-size:1.2rem;flex-shrink:0;}
+                .ab-oi label strong{display:block;font-weight:600;color:#1a202c;margin-bottom:1px;font-size:0.9rem;}
+                .ab-oi label small{color:#9ca3af;font-size:0.78rem;}
+                .ab-oi input:checked+label{border-color:#0F4C81;background:#ebf4ff;color:#0F4C81;}
+                .ab-oi input:checked+label strong{color:#0F4C81;}
+                .ab-oi label:hover{border-color:#0F4C81;background:#f0f7ff;}
+                .ab-range-wrap{display:flex;align-items:center;gap:14px;}
+                .ab-range-wrap input[type=range]{flex:1;height:6px;padding:0;border:none;background:transparent;box-shadow:none;accent-color:#0F4C81;cursor:pointer;}
+                .ab-range-val{min-width:80px;text-align:center;background:#0F4C81;color:#fff;padding:5px 12px;border-radius:99px;font-weight:700;font-size:0.88rem;}
+                .ab-actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:10px;}
+                .ab-btn{padding:12px 28px;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
+                .ab-btn-primary{background:linear-gradient(135deg,#0F4C81,#1a7fa8);color:#fff;box-shadow:0 4px 12px rgba(15,76,129,0.3);}
+                .ab-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,76,129,0.4);}
+                .ab-btn-secondary{background:#f1f5f9;color:#64748b;border:2px solid #e2e8f0;}
+                .ab-btn-secondary:hover{background:#e2e8f0;}
+                .ab-btn-ghost{background:none;color:#9ca3af;padding-left:0;}
+                .ab-btn-ghost:hover{color:#0F4C81;}
+                .ab-err{color:#e53e3e;font-size:0.82rem;margin-top:5px;display:none;}
+                .ab-err.show{display:block;}
+                .ab-success{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:52px 40px;text-align:center;display:none;}
+                .ab-success.active{display:block;animation:abFadeIn 0.4s ease;}
+                @media(max-width:640px){.ab-step{padding:24px 16px;}.ab-og{grid-template-columns:1fr;}.ab-og.cols3{grid-template-columns:repeat(2,1fr);}.ab-actions{flex-direction:column-reverse;}.ab-actions .ab-btn{width:100%;justify-content:center;}}
+                @media(max-width:400px){.ab-og.cols3{grid-template-columns:1fr;}}
+                </style>
+
+                <!-- Step 1 -->
+                <div class="ab-step active" data-step="1">
+                    <span class="ab-step-tag">Step 01</span>
+                    <h3>您的基本信息</h3>
+                    <p class="ab-desc">我们将严格保护您的隐私，信息仅用于为您提供个性化服务。</p>
+                    <div class="ab-fg"><label>称呼 / 姓名 <span class="ab-req">*</span></label><input type="text" id="ab-name" placeholder="如：王先生 / 李女士"><div class="ab-err" id="ab-err-name">请填写您的称呼或姓名</div></div>
+                    <div class="ab-fg"><label>联系方式 <span class="ab-req">*</span><span class="ab-hint">（手机 / WhatsApp / 微信）</span></label><input type="tel" id="ab-contact" placeholder="如：+86 138 0000 0000 或 WeChat ID"><div class="ab-err" id="ab-err-contact">请填写有效的联系方式</div></div>
+                    <div class="ab-fg"><label>电子邮箱 <span class="ab-hint">（选填）</span></label><input type="email" id="ab-email" placeholder="example@domain.com"></div>
+                    <div class="ab-fg">
+                        <label>所在地区 <span class="ab-req">*</span></label>
+                        <select id="ab-region">
+                            <option value="">请选择您所在的地区</option>
+                            <optgroup label="中东 / 中亚"><option>迪拜（阿联酋）</option><option>阿布扎比（阿联酋）</option><option>阿曼</option><option>卡塔尔</option><option>沙特阿拉伯</option></optgroup>
+                            <optgroup label="中国"><option>北京</option><option>上海</option><option>深圳 / 广州</option><option>海南 / 三亚</option><option>香港</option><option>澳门</option><option>其他中国城市</option></optgroup>
+                            <optgroup label="东南亚 / 其他"><option>新加坡</option><option>马来西亚</option><option>泰国</option><option>澳大利亚 / 新西兰</option><option>欧洲</option><option>其他地区</option></optgroup>
+                        </select>
+                        <div class="ab-err" id="ab-err-region">请选择您所在的地区</div>
+                    </div>
+                    <div class="ab-actions"><span></span><button class="ab-btn ab-btn-primary" onclick="abNext(1)">下一步 →</button></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="ab-step" data-step="2">
+                    <span class="ab-step-tag">Step 02</span>
+                    <h3>您的探险目标</h3>
+                    <p class="ab-desc">您最感兴趣的探险游艇类型是什么？（可多选）</p>
+                    <div class="ab-fg">
+                        <label>游艇类型 <span class="ab-req">*</span></label>
+                        <div class="ab-og">
+                            <div class="ab-oi"><input type="checkbox" id="ab-t1" name="ab_type" value="环球探险游艇"><label for="ab-t1"><span class="ico">🌍</span><span><strong>环球探险游艇</strong><small>环球航行 · 穿越大洋</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-t2" name="ab_type" value="极地探险游艇"><label for="ab-t2"><span class="ico">🧊</span><span><strong>极地探险游艇</strong><small>北极 · 南极 · 破冰探险</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-t3" name="ab_type" value="科考探险游艇"><label for="ab-t3"><span class="ico">🔬</span><span><strong>科考探险游艇</strong><small>海洋科研 · 水下探索</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-t4" name="ab_type" value="远航探险游艇"><label for="ab-t4"><span class="ico">⚓</span><span><strong>远航探险游艇</strong><small>跨洋航行 · 长距离续航</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-t5" name="ab_type" value="短距探险游艇"><label for="ab-t5"><span class="ico">🏖️</span><span><strong>短距探险游艇</strong><small>区域巡游 · 度假休闲</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-t6" name="ab_type" value="全定制游艇"><label for="ab-t6"><span class="ico">⚙️</span><span><strong>全定制游艇</strong><small>从零定制 · 个性化设计</small></span></label></div>
+                        </div>
+                        <div class="ab-err" id="ab-err-type">请至少选择一种游艇类型</div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>计划航行区域 <span class="ab-hint">（可多选）</span></label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="checkbox" id="ab-a1" name="ab_area" value="地中海"><label for="ab-a1"><strong>地中海</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a2" name="ab_area" value="印度洋"><label for="ab-a2"><strong>印度洋</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a3" name="ab_area" value="太平洋"><label for="ab-a3"><strong>太平洋</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a4" name="ab_area" value="大西洋"><label for="ab-a4"><strong>大西洋</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a5" name="ab_area" value="北极"><label for="ab-a5"><strong>北极地区</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a6" name="ab_area" value="南极"><label for="ab-a6"><strong>南极地区</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a7" name="ab_area" value="东南亚"><label for="ab-a7"><strong>东南亚海域</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a8" name="ab_area" value="中东海湾"><label for="ab-a8"><strong>中东海湾</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-a9" name="ab_area" value="全球环航"><label for="ab-a9"><strong>全球环航</strong></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-actions"><button class="ab-btn ab-btn-ghost" onclick="abPrev(2)">← 上一步</button><button class="ab-btn ab-btn-primary" onclick="abNext(2)">下一步 →</button></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="ab-step" data-step="3">
+                    <span class="ab-step-tag">Step 03</span>
+                    <h3>游艇规格需求</h3>
+                    <p class="ab-desc">请告诉我们您对游艇尺寸、预算及配置的大致期望。</p>
+                    <div class="ab-fg">
+                        <label>期望游艇长度</label>
+                        <div class="ab-range-wrap">
+                            <input type="range" id="ab-length" min="15" max="120" value="30" step="5" oninput="document.getElementById('ab-lengthVal').textContent=this.value+' 米'">
+                            <div class="ab-range-val" id="ab-lengthVal">30 米</div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#9ca3af;margin-top:5px;"><span>15 米</span><span>120 米</span></div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>舱室数量需求 <span class="ab-req">*</span></label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="radio" id="ab-c1" name="ab_cabins" value="2舱及以下"><label for="ab-c1"><strong>2 舱及以下</strong><small>小型日常使用</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-c2" name="ab_cabins" value="3-4舱"><label for="ab-c2"><strong>3 - 4 舱</strong><small>家庭远航首选</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-c3" name="ab_cabins" value="5-6舱"><label for="ab-c3"><strong>5 - 6 舱</strong><small>多成员长途探险</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-c4" name="ab_cabins" value="7舱以上"><label for="ab-c4"><strong>7 舱以上</strong><small>超级游艇 / 商业</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-c5" name="ab_cabins" value="待定"><label for="ab-c5"><strong>待专家建议</strong><small>尚不确定</small></label></div>
+                        </div>
+                        <div class="ab-err" id="ab-err-cabins">请选择舱室数量</div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>预算范围 <span class="ab-req">*</span></label>
+                        <select id="ab-budget">
+                            <option value="">请选择预算区间</option>
+                            <option>500 万元以下（约 70 万美元）</option>
+                            <option>500 - 1000 万元（约 70 - 140 万美元）</option>
+                            <option>1000 - 3000 万元（约 140 - 430 万美元）</option>
+                            <option>3000 - 8000 万元（约 430 - 1100 万美元）</option>
+                            <option>8000 万元 - 2 亿元（约 1100 - 2800 万美元）</option>
+                            <option>2 亿元以上（约 2800 万美元以上）</option>
+                            <option>预算灵活，待方案确认</option>
+                        </select>
+                        <div class="ab-err" id="ab-err-budget">请选择预算范围</div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>预计同行人数</label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="radio" id="ab-cr1" name="ab_crew" value="1-4人"><label for="ab-cr1"><strong>1 - 4 人</strong><small>私人 / 夫妻</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-cr2" name="ab_crew" value="5-10人"><label for="ab-cr2"><strong>5 - 10 人</strong><small>家庭 / 小团队</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-cr3" name="ab_crew" value="11-20人"><label for="ab-cr3"><strong>11 - 20 人</strong><small>大型团队</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-cr4" name="ab_crew" value="20人以上"><label for="ab-cr4"><strong>20 人以上</strong><small>商业 / 科考团队</small></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-actions"><button class="ab-btn ab-btn-ghost" onclick="abPrev(3)">← 上一步</button><button class="ab-btn ab-btn-primary" onclick="abNext(3)">下一步 →</button></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="ab-step" data-step="4">
+                    <span class="ab-step-tag">Step 04</span>
+                    <h3>特殊功能与配置</h3>
+                    <p class="ab-desc">请勾选您希望配备的特殊功能或设备（可多选，不确定可跳过）。</p>
+                    <div class="ab-fg">
+                        <label>动力系统偏好</label>
+                        <div class="ab-og">
+                            <div class="ab-oi"><input type="radio" id="ab-p1" name="ab_power" value="柴油机"><label for="ab-p1"><span class="ico">⛽</span><span><strong>传统柴油</strong><small>成熟可靠 · 维护方便</small></span></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-p2" name="ab_power" value="混合动力"><label for="ab-p2"><span class="ico">🔋</span><span><strong>油电混合</strong><small>低噪 · 节能 · 环保</small></span></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-p3" name="ab_power" value="全电驱动"><label for="ab-p3"><span class="ico">⚡</span><span><strong>全电驱动</strong><small>零排放 · 静音巡航</small></span></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-p4" name="ab_power" value="不确定"><label for="ab-p4"><span class="ico">💬</span><span><strong>待专家建议</strong><small>尚未决定</small></span></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>期望特殊配置</label>
+                        <div class="ab-og">
+                            <div class="ab-oi"><input type="checkbox" id="ab-f1" name="ab_feat" value="破冰船体"><label for="ab-f1"><span class="ico">🧊</span><span><strong>破冰船体</strong><small>极地探险必备</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f2" name="ab_feat" value="直升机停机坪"><label for="ab-f2"><span class="ico">🚁</span><span><strong>直升机停机坪</strong><small>快速接驳</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f3" name="ab_feat" value="潜水支持系统"><label for="ab-f3"><span class="ico">🤿</span><span><strong>潜水支持系统</strong><small>水下探索</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f4" name="ab_feat" value="ROV水下机器人"><label for="ab-f4"><span class="ico">🤖</span><span><strong>ROV 水下机器人</strong><small>科考探索利器</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f5" name="ab_feat" value="卫星通讯系统"><label for="ab-f5"><span class="ico">📡</span><span><strong>卫星通讯系统</strong><small>全球覆盖</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f6" name="ab_feat" value="太阳能系统"><label for="ab-f6"><span class="ico">☀️</span><span><strong>太阳能系统</strong><small>绿色能源</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f7" name="ab_feat" value="海水淡化系统"><label for="ab-f7"><span class="ico">💧</span><span><strong>海水淡化</strong><small>自给自足</small></span></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-f8" name="ab_feat" value="科研实验室"><label for="ab-f8"><span class="ico">🔬</span><span><strong>科研实验室</strong><small>海洋科研</small></span></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>内饰风格偏好</label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="radio" id="ab-s1" name="ab_style" value="现代简约"><label for="ab-s1"><strong>现代简约</strong><small>干净利落</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-s2" name="ab_style" value="豪华奢侈"><label for="ab-s2"><strong>豪华奢侈</strong><small>顶级材质</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-s3" name="ab_style" value="功能实用"><label for="ab-s3"><strong>功能实用</strong><small>专注性能</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-s4" name="ab_style" value="自然有机"><label for="ab-s4"><strong>自然有机</strong><small>木质温暖</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-s5" name="ab_style" value="全定制"><label for="ab-s5"><strong>全定制</strong><small>完全个性化</small></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-actions"><button class="ab-btn ab-btn-ghost" onclick="abPrev(4)">← 上一步</button><button class="ab-btn ab-btn-primary" onclick="abNext(4)">下一步 →</button></div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="ab-step" data-step="5">
+                    <span class="ab-step-tag">Step 05</span>
+                    <h3>补充信息</h3>
+                    <p class="ab-desc">最后几个问题帮助我们提供更精准的服务建议。</p>
+                    <div class="ab-fg">
+                        <label>购置意向时间 <span class="ab-req">*</span></label>
+                        <select id="ab-timeline">
+                            <option value="">请选择大致时间段</option>
+                            <option>6 个月内</option><option>6 - 12 个月</option><option>1 - 2 年</option>
+                            <option>2 - 3 年</option><option>3 年以上 / 长期规划</option><option>仅了解市场，暂无明确计划</option>
+                        </select>
+                        <div class="ab-err" id="ab-err-timeline">请选择购置意向时间</div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>目前了解程度</label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="radio" id="ab-e1" name="ab_exp" value="初次接触"><label for="ab-e1"><strong>初次接触</strong><small>刚开始了解</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-e2" name="ab_exp" value="有一定了解"><label for="ab-e2"><strong>有一定了解</strong><small>研究过市场</small></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-e3" name="ab_exp" value="经验丰富"><label for="ab-e3"><strong>经验丰富</strong><small>拥有过游艇</small></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-fg">
+                        <label>您最希望获得哪方面的帮助？</label>
+                        <div class="ab-og">
+                            <div class="ab-oi"><input type="checkbox" id="ab-h1" name="ab_help" value="游艇选型建议"><label for="ab-h1"><strong>游艇选型建议</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h2" name="ab_help" value="建造厂商推荐"><label for="ab-h2"><strong>建造厂商推荐</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h3" name="ab_help" value="二手游艇推荐"><label for="ab-h3"><strong>二手游艇推荐</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h4" name="ab_help" value="定制改造方案"><label for="ab-h4"><strong>定制改造方案</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h5" name="ab_help" value="融资贷款方案"><label for="ab-h5"><strong>融资 / 贷款方案</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h6" name="ab_help" value="注册挂旗服务"><label for="ab-h6"><strong>注册 / 挂旗服务</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h7" name="ab_help" value="船员配置建议"><label for="ab-h7"><strong>船员配置建议</strong></label></div>
+                            <div class="ab-oi"><input type="checkbox" id="ab-h8" name="ab_help" value="游艇托管运营"><label for="ab-h8"><strong>游艇托管运营</strong></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-fg"><label>其他想说的话 / 特殊需求</label><textarea id="ab-notes" placeholder="请在这里补充任何我们需要了解的信息……"></textarea></div>
+                    <div class="ab-fg">
+                        <label>首选联系方式</label>
+                        <div class="ab-og cols3">
+                            <div class="ab-oi"><input type="radio" id="ab-r1" name="ab_reach" value="微信"><label for="ab-r1"><strong>微信</strong></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-r2" name="ab_reach" value="WhatsApp"><label for="ab-r2"><strong>WhatsApp</strong></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-r3" name="ab_reach" value="电话"><label for="ab-r3"><strong>电话</strong></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-r4" name="ab_reach" value="邮件"><label for="ab-r4"><strong>邮件</strong></label></div>
+                            <div class="ab-oi"><input type="radio" id="ab-r5" name="ab_reach" value="均可"><label for="ab-r5"><strong>均可</strong></label></div>
+                        </div>
+                    </div>
+                    <div class="ab-actions"><button class="ab-btn ab-btn-ghost" onclick="abPrev(5)">← 上一步</button><button class="ab-btn ab-btn-primary" onclick="abSubmit()" id="ab-submitBtn">提交问卷 ✓</button></div>
+                </div>
+
+                <!-- 成功 -->
+                <div class="ab-success" id="ab-successCard">
+                    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0F4C81,#1a7fa8);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:1.8rem;color:#fff;">✓</div>
+                    <h2 style="font-size:1.8rem;color:#1a202c;margin-bottom:12px;">问卷已整理完成！</h2>
+                    <p style="color:#6b7280;line-height:1.8;max-width:480px;margin:0 auto 28px;">请点击下方按钮，用您的邮件客户端将问卷内容发送给我们，<strong>发送后即完成提交</strong>。</p>
+                    <div id="ab-emailPreview" style="text-align:left;background:#f7fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px 24px;margin-bottom:24px;font-size:0.88rem;line-height:1.8;color:#374151;max-height:300px;overflow-y:auto;"></div>
+                    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                        <a id="ab-mailtoBtn" href="#" class="ab-btn ab-btn-primary" style="font-size:1rem;padding:13px 32px;">📧 打开邮件客户端发送</a>
+                        <button onclick="abCopy()" class="ab-btn ab-btn-secondary" id="ab-copyBtn">复制内容</button>
+                    </div>
+                    <p style="margin-top:16px;font-size:0.82rem;color:#9ca3af;">如邮件客户端未自动打开，请手动发送至 <a href="mailto:yacht@xinyouting.com" style="color:#0F4C81;font-weight:600;">yacht@xinyouting.com</a></p>
+                </div>
             </div>
         </section>
+
+        <script>
+        (function(){
+            const TOTAL = 5;
+            let cur = 1, _bodyText = '';
+
+            function updProg(step){
+                const pct = Math.round(((step-1)/TOTAL)*100);
+                document.getElementById('ab-progressFill').style.width = pct+'%';
+                document.getElementById('ab-stepLabel').textContent = '第 '+step+' 步 / 共 '+TOTAL+' 步';
+                document.getElementById('ab-stepPct').textContent = pct+'%';
+            }
+            function showStep(step){
+                document.querySelectorAll('.ab-step').forEach(c=>c.classList.remove('active'));
+                const card = document.querySelector('.ab-step[data-step="'+step+'"]');
+                if(card){ card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'start'}); }
+                updProg(step); cur = step;
+            }
+            function validate(step){
+                let ok = true;
+                const se = id=>{ document.getElementById(id).classList.add('show'); ok=false; };
+                const ce = id=>{ document.getElementById(id).classList.remove('show'); };
+                if(step===1){
+                    ce('ab-err-name'); ce('ab-err-contact'); ce('ab-err-region');
+                    if(!document.getElementById('ab-name').value.trim()) se('ab-err-name');
+                    if(!document.getElementById('ab-contact').value.trim()) se('ab-err-contact');
+                    if(!document.getElementById('ab-region').value) se('ab-err-region');
+                }
+                if(step===2){ ce('ab-err-type'); if(!document.querySelectorAll('input[name="ab_type"]:checked').length) se('ab-err-type'); }
+                if(step===3){ ce('ab-err-cabins'); ce('ab-err-budget'); if(!document.querySelector('input[name="ab_cabins"]:checked')) se('ab-err-cabins'); if(!document.getElementById('ab-budget').value) se('ab-err-budget'); }
+                if(step===5){ ce('ab-err-timeline'); if(!document.getElementById('ab-timeline').value) se('ab-err-timeline'); }
+                return ok;
+            }
+            window.abNext = function(from){ if(validate(from)) showStep(from+1); };
+            window.abPrev = function(from){ showStep(from-1); };
+            window.abSubmit = function(){
+                if(!validate(5)) return;
+                const btn = document.getElementById('ab-submitBtn');
+                btn.disabled=true; btn.textContent='整理中…';
+                const vals = (name)=>[...document.querySelectorAll('input[name="'+name+'"]:checked')].map(e=>e.value);
+                const d = {
+                    name: document.getElementById('ab-name').value,
+                    contact: document.getElementById('ab-contact').value,
+                    email: document.getElementById('ab-email').value,
+                    region: document.getElementById('ab-region').value,
+                    yacht_types: vals('ab_type'), areas: vals('ab_area'),
+                    length: document.getElementById('ab-length').value+' 米',
+                    cabins: document.querySelector('input[name="ab_cabins"]:checked')?.value||'',
+                    budget: document.getElementById('ab-budget').value,
+                    crew: document.querySelector('input[name="ab_crew"]:checked')?.value||'',
+                    power: document.querySelector('input[name="ab_power"]:checked')?.value||'',
+                    features: vals('ab_feat'),
+                    interior: document.querySelector('input[name="ab_style"]:checked')?.value||'',
+                    timeline: document.getElementById('ab-timeline').value,
+                    experience: document.querySelector('input[name="ab_exp"]:checked')?.value||'',
+                    help: vals('ab_help'),
+                    notes: document.getElementById('ab-notes').value,
+                    reachby: document.querySelector('input[name="ab_reach"]:checked')?.value||'',
+                    submitted_at: new Date().toLocaleString('zh-CN')
+                };
+                const L = (lbl,v)=>(!v||(Array.isArray(v)&&!v.length))?'': '【'+lbl+'】'+(Array.isArray(v)?v.join('、'):v)+'\n';
+                _bodyText =
+`===== 探险游艇需求调研 =====
+填写时间：${d.submitted_at}
+
+── 基本信息 ──
+${L('称呼 / 姓名',d.name)}${L('联系方式',d.contact)}${L('电子邮箱',d.email)}${L('所在地区',d.region)}
+── 探险目标 ──
+${L('游艇类型',d.yacht_types)}${L('计划航行区域',d.areas)}
+── 规格需求 ──
+${L('期望游艇长度',d.length)}${L('舱室数量',d.cabins)}${L('预算范围',d.budget)}${L('预计同行人数',d.crew)}
+── 特殊配置 ──
+${L('动力系统偏好',d.power)}${L('特殊设备',d.features)}${L('内饰风格',d.interior)}
+── 购置意向 ──
+${L('购置时间',d.timeline)}${L('了解程度',d.experience)}${L('希望获得帮助',d.help)}${L('首选联系方式',d.reachby)}${d.notes?'\n── 补充说明 ──\n'+d.notes+'\n':''}
+===========================`;
+                document.getElementById('ab-emailPreview').innerHTML = _bodyText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/===(.+)===/g,'<strong style="color:#0F4C81">$&</strong>').replace(/──(.+)──/g,'<span style="color:#0F4C81;font-weight:700">$&</span>').replace(/\n/g,'<br>');
+                const subj = encodeURIComponent('【探险游艇需求调研】'+d.name+' · '+d.region+' · '+d.submitted_at);
+                document.getElementById('ab-mailtoBtn').href = 'mailto:yacht@xinyouting.com?subject='+subj+'&body='+encodeURIComponent(_bodyText);
+                document.querySelectorAll('.ab-step').forEach(c=>c.classList.remove('active'));
+                document.getElementById('ab-progressWrapper').style.display='none';
+                document.getElementById('ab-successCard').classList.add('active');
+                document.getElementById('ab-successCard').scrollIntoView({behavior:'smooth',block:'start'});
+                setTimeout(()=>{ document.getElementById('ab-mailtoBtn').click(); }, 600);
+            };
+            window.abCopy = function(){
+                navigator.clipboard.writeText(_bodyText).then(()=>{
+                    const b=document.getElementById('ab-copyBtn');
+                    b.textContent='✓ 已复制'; b.style.background='#d1fae5'; b.style.color='#065f46';
+                    setTimeout(()=>{ b.textContent='复制内容'; b.style.background=''; b.style.color=''; },2500);
+                }).catch(()=>{
+                    const ta=document.createElement('textarea'); ta.value=_bodyText;
+                    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                    document.getElementById('ab-copyBtn').textContent='✓ 已复制';
+                });
+            };
+            updProg(1);
+        })();
+        </script>
 
         <!-- 我们的优势 -->
         <section class="our-advantages">
@@ -258,7 +620,7 @@
         <div class="footer-bottom">
             <div class="footer-container">
                 <div class="footer-bottom-left">
-                    <p>&copy; 2020 - 2025 New Yachting FZE, LLC. All Rights Reserved.</p>
+                    <p>&copy; 2020–2026 New Yachting FZE, LLC. All Rights Reserved.</p>
                 </div>
                 <div class="footer-bottom-right">
                     <a href="admin-login.html" class="admin-link">管理入口</a>

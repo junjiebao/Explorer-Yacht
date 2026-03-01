@@ -95,13 +95,8 @@
         <priority>0.7</priority>
     </url>
 
-    <!-- 交互页面 -->
-    <url>
-        <loc>https://www.tanxianyouting.com/survey.html</loc>
-        <lastmod>2025-02-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
+
+
 
     <!-- 服务页面 -->
     <url>

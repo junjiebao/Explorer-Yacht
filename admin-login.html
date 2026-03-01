@@ -1,136 +1,499 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理员登录 - Explorer Yacht</title>
+    <title>管理后台 · Explorer Yacht</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: #f7fafc;
-        }
-        
-        .login-container {
-            flex: 1;
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 40px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .form-group label {
-            font-weight: 500;
-            color: #2d3748;
-        }
-        .form-group input {
-            padding: 10px;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-        .login-btn {
-            padding: 12px;
-            background: #2b6cb0;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .login-btn:hover {
-            background: #2c5282;
-        }
-        .site-footer {
-            background: #2d3748;
-            color: #fff;
-            padding: 20px 0;
-            margin-top: auto;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #0F4C81;
+            --primary-light: #1a7fa8;
+            --primary-dark: #082e4d;
+            --gold: #e2b13c;
+            --text: #1a202c;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+            --bg: #f0f4f8;
+            --white: #fff;
+            --error: #e53e3e;
+            --success: #38a169;
+            --radius: 12px;
+            --shadow: 0 20px 60px rgba(15, 76, 129, 0.15);
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #a0aec0;
+        html, body {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景装饰 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 70vw;
+            height: 70vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15,76,129,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(226,177,60,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+            margin: 20px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        /* 顶部品牌区 */
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+            padding: 36px 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: var(--white);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .brand-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: white;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-header h1 {
+            color: white;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .card-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+
+        /* 表单区 */
+        .card-body {
+            padding: 32px 40px 36px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+        .input-wrap svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 17px;
+            height: 17px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            pointer-events: none;
+            transition: stroke 0.2s;
+        }
+        .input-wrap input {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: #fafbfc;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            outline: none;
+        }
+        .input-wrap input:focus {
+            border-color: var(--primary-light);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(26, 127, 168, 0.12);
+        }
+        .input-wrap input:focus + svg,
+        .input-wrap:focus-within svg {
+            stroke: var(--primary-light);
+        }
+        .input-wrap input.error {
+            border-color: var(--error);
+            background: #fff5f5;
+        }
+
+        /* 密码显示切换 */
+        .toggle-pw {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--text-muted);
+            line-height: 0;
+            transition: color 0.2s;
+        }
+        .toggle-pw:hover { color: var(--primary); }
+        .toggle-pw svg {
+            position: static;
+            transform: none;
+            stroke: currentColor;
+        }
+
+        /* 错误提示 */
+        .error-msg {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: var(--error);
+        }
+        .error-msg.show { display: flex; }
+        .error-msg svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            stroke: var(--error);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        /* 全局错误 */
+        .alert {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+        .alert.error {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            color: var(--error);
+        }
+        .alert.show { display: flex; }
+        .alert svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* 提交按钮 */
+        .btn-login {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(15, 76, 129, 0.35);
+            position: relative;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .btn-login:hover:not(:disabled) {
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(15, 76, 129, 0.4);
+        }
+        .btn-login:active:not(:disabled) { transform: translateY(0); }
+        .btn-login:disabled { opacity: 0.65; cursor: not-allowed; }
+
+        .btn-login .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255,255,255,0.4);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .btn-login.loading .btn-text { visibility: hidden; }
+        .btn-login.loading .spinner { display: block; }
+
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* 底部 */
+        .card-footer {
+            border-top: 1px solid var(--border);
+            padding: 16px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .card-footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+        .card-footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>管理员登录</h2>
-        <form id="login-form" class="login-form">
-            <div class="form-group">
-                <label>用户名</label>
-                <input type="text" name="username" required>
-            </div>
-            <div class="form-group">
-                <label>密码</label>
-                <input type="password" name="password" required>
-            </div>
-            <button type="submit" class="login-btn">登录</button>
-        </form>
+
+<div class="card">
+    <div class="card-header">
+        <div class="brand-icon">
+            <!-- Anchor / helm icon -->
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="5" r="2"/>
+                <line x1="12" y1="7" x2="12" y2="19"/>
+                <path d="M5 12h14"/>
+                <path d="M5 19c0-3.87 3.13-7 7-7"/>
+                <path d="M19 19c0-3.87-3.13-7-7-7"/>
+            </svg>
+        </div>
+        <h1>Explorer Yacht</h1>
+        <p>管理后台 · 请登录以继续</p>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>Copyright © 2020 - 2025 New Yachting FZE, LLC. All Rights Reserved.</p>
+    <div class="card-body">
+        <!-- 全局错误 -->
+        <div class="alert error" id="alertBox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="alertText"></span>
         </div>
-    </footer>
 
-    <script>
-    document.getElementById('login-form').addEventListener('submit', async function(e) {
+        <form id="loginForm" novalidate autocomplete="off">
+            <!-- 用户名 -->
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <div class="input-wrap">
+                    <input type="text" id="username" name="username"
+                           placeholder="输入管理员账号" autocomplete="username" required>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div class="error-msg" id="usernameErr">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>请输入用户名</span>
+                </div>
+            </div>
+
+            <!-- 密码 -->
+            <div class="form-group">
+                <label for="password">密码</label>
+                <div class="input-wrap">
+                    <input type="password" id="password" name="password"
+                           placeholder="输入登录密码" autocomplete="current-password" required>
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <button type="button" class="toggle-pw" id="togglePw" aria-label="显示/隐藏密码">
+                        <svg id="eyeIcon" viewBox="0 0 24 24" width="17" height="17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="error-msg" id="passwordErr">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>请输入密码</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span class="btn-text">登 录</span>
+                <span class="spinner"></span>
+            </button>
+        </form>
+
+
+    </div>
+
+    <div class="card-footer">
+        &copy; 2020–2026 New Yachting FZE, LLC &nbsp;·&nbsp;
+        <a href="/">返回网站首页</a>
+    </div>
+</div>
+
+<script>
+(function () {
+    const form = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const alertBox = document.getElementById('alertBox');
+    const alertText = document.getElementById('alertText');
+    const togglePw = document.getElementById('togglePw');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    // 密码显示切换
+    togglePw.addEventListener('click', function () {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        eyeIcon.innerHTML = isPassword
+            ? `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+               <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+               <line x1="1" y1="1" x2="23" y2="23"/>`
+            : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+               <circle cx="12" cy="12" r="3"/>`;
+    });
+
+    // 清除错误状态
+    function clearErrors() {
+        usernameInput.classList.remove('error');
+        passwordInput.classList.remove('error');
+        document.getElementById('usernameErr').classList.remove('show');
+        document.getElementById('passwordErr').classList.remove('show');
+        alertBox.classList.remove('show');
+    }
+
+    // 显示全局错误
+    function showAlert(msg) {
+        alertText.textContent = msg;
+        alertBox.classList.add('show');
+    }
+
+    // 输入时清除错误
+    usernameInput.addEventListener('input', clearErrors);
+    passwordInput.addEventListener('input', clearErrors);
+
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        const formData = new FormData(this);
-        const username = formData.get('username');
-        const password = formData.get('password');
+        clearErrors();
 
-        // 添加基本验证
-        if (!username || !password) {
-            alert('请输入用户名和密码');
-            return;
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+
+        // 前端基础校验
+        let hasError = false;
+        if (!username) {
+            usernameInput.classList.add('error');
+            document.getElementById('usernameErr').classList.add('show');
+            hasError = true;
         }
-        
+        if (!password) {
+            passwordInput.classList.add('error');
+            document.getElementById('passwordErr').classList.add('show');
+            hasError = true;
+        }
+        if (hasError) return;
+
+        // 发起请求
+        loginBtn.classList.add('loading');
+        loginBtn.disabled = true;
+
         try {
             const response = await fetch('/api/admin/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
             });
-            
+
             const data = await response.json();
-            console.log('服务器响应:', data); // 添加日志
-            
-            if (response.ok) {
+
+            if (response.ok && data.token) {
                 localStorage.setItem('adminToken', data.token);
-                window.location.href = '/admin.html';
+                localStorage.setItem('adminUser', data.username || username);
+                // 短暂成功反馈后跳转
+                loginBtn.style.background = 'linear-gradient(135deg, #2f855a, #38a169)';
+                loginBtn.querySelector('.btn-text').textContent = '登录成功，跳转中…';
+                loginBtn.classList.remove('loading');
+                setTimeout(() => { window.location.href = '/admin.html'; }, 600);
             } else {
-                alert(data.error || '登录失败，请检查用户名和密码');
+                loginBtn.classList.remove('loading');
+                loginBtn.disabled = false;
+                showAlert(data.error || '用户名或密码错误，请重试');
+                passwordInput.value = '';
+                passwordInput.focus();
             }
-        } catch (error) {
-            console.error('登录请求错误:', error);
-            alert('登录失败，请检查网络连接后重试');
+        } catch (err) {
+            loginBtn.classList.remove('loading');
+            loginBtn.disabled = false;
+            showAlert('网络连接失败，请检查后重试');
+            console.error('Login error:', err);
         }
     });
-    </script>
+
+    // Enter 键提交
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !loginBtn.disabled) form.requestSubmit();
+    });
+})();
+</script>
 </body>
-</html> 
+</html>
+
