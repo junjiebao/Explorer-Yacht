@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const nodemailer = require('nodemailer');
 const app = express();
 const mysql = require('mysql2/promise');
@@ -236,7 +236,7 @@ const mailTransporter = nodemailer.createTransport({
     port: parseInt(process.env.MAIL_PORT) || 465,
     secure: true,
     auth: {
-        user: process.env.MAIL_USER || 'yacht@xinyouting.com',
+        user: process.env.MAIL_USER || 'yacht@tanxianyouting.com',
         pass: process.env.MAIL_PASS || ''   // 在生产环境通过 MAIL_PASS 环境变量配置
     }
 });
@@ -324,8 +324,8 @@ app.post('/api/submit-survey', async (req, res) => {
         // 发送邮件通知
         try {
             await mailTransporter.sendMail({
-                from: `"Explorer Yacht 调研系统" <${process.env.MAIL_USER || 'yacht@xinyouting.com'}>`,
-                to: 'yacht@xinyouting.com',
+                from: `"Explorer Yacht 调研系统" <${process.env.MAIL_USER || 'yacht@tanxianyouting.com'}>`,
+                to: 'yacht@tanxianyouting.com',
                 subject: `【新调研】${data.name || '匿名'} · ${data.region || ''} · ${timestamp.toLocaleDateString('zh-CN')}`,
                 html: buildSurveyEmail(data)
             });
@@ -455,7 +455,7 @@ async function initializeAdmin() {
         // 检查是否已存在管理员账号
         const [rows] = await connection.execute(
             'SELECT * FROM admins WHERE username = ?',
-            ['JOEY.BAO@XINYOUTING.COM']
+            ['JOEY.BAO@tanxianyouting.com']
         );
 
         if (rows.length === 0) {
@@ -463,7 +463,7 @@ async function initializeAdmin() {
             const hashedPassword = await bcrypt.hash('Joey@8837', 10);
             await connection.execute(
                 'INSERT INTO admins (username, password) VALUES (?, ?)',
-                ['JOEY.BAO@XINYOUTING.COM', hashedPassword]
+                ['JOEY.BAO@tanxianyouting.com', hashedPassword]
             );
             console.log('管理员账号创建成功');
         } else {
@@ -471,7 +471,7 @@ async function initializeAdmin() {
             const hashedPassword = await bcrypt.hash('Joey@8837', 10);
             await connection.execute(
                 'UPDATE admins SET password = ? WHERE username = ?',
-                [hashedPassword, 'JOEY.BAO@XINYOUTING.COM']
+                [hashedPassword, 'JOEY.BAO@tanxianyouting.com']
             );
             console.log('管理员账号密码已更新');
         }

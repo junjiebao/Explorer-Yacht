@@ -356,7 +356,7 @@
                         <a id="ab-mailtoBtn" href="#" class="ab-btn ab-btn-primary" style="font-size:1rem;padding:13px 32px;">📧 打开邮件客户端发送</a>
                         <button onclick="abCopy()" class="ab-btn ab-btn-secondary" id="ab-copyBtn">复制内容</button>
                     </div>
-                    <p style="margin-top:16px;font-size:0.82rem;color:#9ca3af;">如邮件客户端未自动打开，请手动发送至 <a href="mailto:yacht@xinyouting.com" style="color:#0F4C81;font-weight:600;">yacht@xinyouting.com</a></p>
+                    <p style="margin-top:16px;font-size:0.82rem;color:#9ca3af;">如邮件客户端未自动打开，请手动发送至 <a href="mailto:build@tanxianyouting.com" style="color:#0F4C81;font-weight:600;">yacht@tanxianyouting.com</a></p>
                 </div>
             </div>
         </section>
@@ -438,7 +438,7 @@ ${L('购置时间',d.timeline)}${L('了解程度',d.experience)}${L('希望获�
 ===========================`;
                 document.getElementById('ab-emailPreview').innerHTML = _bodyText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/===(.+)===/g,'<strong style="color:#0F4C81">$&</strong>').replace(/──(.+)──/g,'<span style="color:#0F4C81;font-weight:700">$&</span>').replace(/\n/g,'<br>');
                 const subj = encodeURIComponent('【探险游艇需求调研】'+d.name+' · '+d.region+' · '+d.submitted_at);
-                document.getElementById('ab-mailtoBtn').href = 'mailto:yacht@xinyouting.com?subject='+subj+'&body='+encodeURIComponent(_bodyText);
+                document.getElementById('ab-mailtoBtn').href = 'mailto:yacht@tanxianyouting.com?subject='+subj+'&body='+encodeURIComponent(_bodyText);
                 document.querySelectorAll('.ab-step').forEach(c=>c.classList.remove('active'));
                 document.getElementById('ab-progressWrapper').style.display='none';
                 document.getElementById('ab-successCard').classList.add('active');
@@ -609,10 +609,10 @@ ${L('购置时间',d.timeline)}${L('了解程度',d.experience)}${L('希望获�
                 <div class="footer-section">
                     <h4>业务联系</h4>
                     <ul class="footer-contact">
-                        <li><strong>新建游艇:</strong> <a href="mailto:Build@xinyouting.com">Build@xinyouting.com</a></li>
-                        <li><strong>出售游艇:</strong> <a href="mailto:listing@xinyouting.com">listing@xinyouting.com</a></li>
-                        <li><strong>托管游艇:</strong> <a href="mailto:manage@xinyouting.com">manage@xinyouting.com</a></li>
-                        <li><strong>游艇租赁:</strong> <a href="mailto:charter@xinyouting.com">charter@xinyouting.com</a></li>
+                        <li><strong>新建游艇:</strong> <a href="mailto:Build@tanxianyouting.com">Build@tanxianyouting.com</a></li>
+                        <li><strong>出售游艇:</strong> <a href="mailto:listing@tanxianyouting.com">listing@tanxianyouting.com</a></li>
+                        <li><strong>托管游艇:</strong> <a href="mailto:manage@tanxianyouting.com">manage@tanxianyouting.com</a></li>
+                        <li><strong>游艇租赁:</strong> <a href="mailto:charter@tanxianyouting.com">charter@tanxianyouting.com</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-// 探险游艇定制与改造中心页面交互脚本
+﻿// 探险游艇定制与改造中心页面交互脚本
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
@@ -273,7 +273,7 @@ function handleSubmit(event) {
     `);
     
     // 发送邮件
-    window.location.href = `mailto:BUILD@XINYOUTING.COM?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:BUILD@tanxianyouting.com?subject=${subject}&body=${body}`;
     
     // 显示成功提示
     showNotification('咨询申请已提交，我们将尽快与您联系！', 'success');
