@@ -312,7 +312,47 @@ section h2 {
         height: 220px;
         margin: 20px auto;
     }
-} 
+}
+
+/* 超小屏优化 */
+@media (max-width: 480px) {
+    .knowledge-main {
+        padding-top: 80px;
+    }
+
+    .intro h1 {
+        font-size: 1.6em;
+    }
+
+    .intro .subtitle {
+        font-size: 1em;
+    }
+
+    .intro-text {
+        font-size: 0.9em;
+    }
+
+    section {
+        margin-bottom: 35px;
+        padding: 0 12px;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .grid-item {
+        padding: 18px;
+    }
+
+    .ebook-section {
+        padding: 20px;
+    }
+
+    .ebook-info h3 {
+        font-size: 1.4rem;
+    }
+}
 
 .ebook-section h2 {
     text-align: center;

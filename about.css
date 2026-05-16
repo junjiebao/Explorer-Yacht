@@ -235,6 +235,89 @@
     }
 }
 
+/* 小屏手机适配 */
+@media (max-width: 480px) {
+    .about-main {
+        padding-top: 60px;
+    }
+
+    .company-intro {
+        padding: 60px 0;
+    }
+
+    .company-intro h1 {
+        font-size: 1.6rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .intro-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .our-advantages {
+        padding: 50px 0;
+    }
+
+    .our-advantages h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .advantage-item {
+        padding: 25px;
+    }
+
+    .advantage-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .our-services {
+        padding: 50px 0;
+    }
+
+    .our-services h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .service-item {
+        padding: 20px;
+    }
+
+    .service-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .broker-services {
+        padding: 50px 0;
+    }
+
+    .broker-services h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .broker-item {
+        padding: 20px;
+    }
+
+    .broker-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .broker-item li {
+        font-size: 0.95rem;
+    }
+
+    .section-content {
+        padding: 0 12px;
+    }
+}
+
 /* 顶部导航栏过渡动画 */
 .top-bar {
     transition: transform 0.3s ease-in-out;
@@ -242,4 +325,314 @@
 
 .top-bar.hidden {
     transform: translateY(-100%);
-} 
+}
+
+/* ========================================
+   A/B 步骤表单样式 (about.html)
+   ======================================== */
+
+/* 步骤卡片 */
+.ab-step {
+    display: none;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    margin-bottom: 16px;
+    animation: abFadeIn 0.3s ease;
+}
+
+.ab-step.active {
+    display: block;
+}
+
+@keyframes abFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 步骤标签 */
+.ab-step-tag {
+    display: inline-block;
+    background: #ebf4ff;
+    color: #0F4C81;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ab-step h3 {
+    font-size: 1.5rem;
+    color: #1a202c;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.ab-step .ab-desc {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+}
+
+/* 表单字段 */
+.ab-fg {
+    margin-bottom: 22px;
+}
+
+.ab-fg label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    font-size: 0.93rem;
+}
+
+.ab-fg label .ab-req {
+    color: #e53e3e;
+    margin-left: 3px;
+}
+
+.ab-fg label .ab-hint {
+    font-weight: 400;
+    color: #9ca3af;
+    font-size: 0.82rem;
+    margin-left: 6px;
+}
+
+.ab-fg input[type=text],
+.ab-fg input[type=email],
+.ab-fg input[type=tel],
+.ab-fg select,
+.ab-fg textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #1a202c;
+    background: #f9fafb;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.ab-fg input:focus,
+.ab-fg select:focus,
+.ab-fg textarea:focus {
+    border-color: #0F4C81;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.1);
+}
+
+.ab-fg textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.ab-fg select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 36px;
+}
+
+/* 选项组 */
+.ab-og {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.ab-og.cols3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 选项项 */
+.ab-oi {
+    position: relative;
+}
+
+.ab-oi input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ab-oi label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #f9fafb;
+    transition: all 0.2s;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.ab-oi label .ico {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.ab-oi label strong {
+    display: block;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 1px;
+    font-size: 0.9rem;
+}
+
+.ab-oi label small {
+    color: #9ca3af;
+    font-size: 0.78rem;
+}
+
+.ab-oi input:checked + label {
+    border-color: #0F4C81;
+    background: #ebf4ff;
+    color: #0F4C81;
+}
+
+.ab-oi input:checked + label strong {
+    color: #0F4C81;
+}
+
+.ab-oi label:hover {
+    border-color: #0F4C81;
+    background: #f0f7ff;
+}
+
+/* 范围滑块 */
+.ab-range-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.ab-range-wrap input[type=range] {
+    flex: 1;
+    height: 6px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    accent-color: #0F4C81;
+    cursor: pointer;
+}
+
+.ab-range-val {
+    min-width: 80px;
+    text-align: center;
+    background: #0F4C81;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+/* 按钮区 */
+.ab-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    gap: 10px;
+}
+
+.ab-btn {
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ab-btn-primary {
+    background: linear-gradient(135deg, #0F4C81, #1a7fa8);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(15, 76, 129, 0.3);
+}
+
+.ab-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 76, 129, 0.4);
+}
+
+.ab-btn-secondary {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+}
+
+.ab-btn-secondary:hover {
+    background: #e2e8f0;
+}
+
+.ab-btn-ghost {
+    background: none;
+    color: #9ca3af;
+    padding-left: 0;
+}
+
+.ab-btn-ghost:hover {
+    color: #0F4C81;
+}
+
+/* 错误提示 */
+.ab-err {
+    color: #e53e3e;
+    font-size: 0.82rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.ab-err.show {
+    display: block;
+}
+
+/* 成功页面 */
+.ab-success {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 52px 40px;
+    text-align: center;
+    display: none;
+}
+
+.ab-success.active {
+    display: block;
+    animation: abFadeIn 0.4s ease;
+}
+
+/* AB表单响应式 */
+@media (max-width: 640px) {
+    .ab-step { padding: 24px 16px; }
+    .ab-og { grid-template-columns: 1fr; }
+    .ab-og.cols3 { grid-template-columns: repeat(2, 1fr); }
+    .ab-actions { flex-direction: column-reverse; }
+    .ab-actions .ab-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 400px) {
+    .ab-og.cols3 { grid-template-columns: 1fr; }
+}

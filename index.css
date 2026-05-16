@@ -486,6 +486,49 @@
         }
     }
 
+    /* 超小屏优化 */
+    @media (max-width: 480px) {
+        .cost-calculator {
+            padding: 40px 12px;
+        }
+
+        .calculator-title {
+            font-size: 1.5em;
+        }
+
+        .calculator-container {
+            padding: 15px;
+            gap: 20px;
+        }
+
+        .calculator-form {
+            padding: 10px;
+        }
+
+        .calculator-results {
+            padding: 15px;
+        }
+
+        .cost-info-cards {
+            padding: 0;
+        }
+
+        .info-card {
+            padding: 18px;
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .calculate-button {
+            padding: 14px;
+            font-size: 15px;
+        }
+    }
+
     .yacht-survey {
         padding: 60px 20px;
         background: #f8fafc;

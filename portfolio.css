@@ -208,6 +208,60 @@
     }
 }
 
+/* 超小屏优化 */
+@media (max-width: 480px) {
+    .portfolio-main {
+        padding-top: 80px;
+    }
+
+    .portfolio-title {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+
+    .portfolio-grid {
+        gap: 15px;
+        padding: 0 12px;
+    }
+
+    .portfolio-item img {
+        height: 220px;
+    }
+
+    .portfolio-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .portfolio-content p {
+        font-size: 0.9rem;
+    }
+
+    .ebook-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+        width: 95%;
+    }
+
+    .ebook-container {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .ebook-title {
+        font-size: 1.4rem;
+    }
+
+    .ebook-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .qr-code img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
 /* ============================================================
    统一导航覆写 — 隐藏顶部小导航，主导航置顶
    ============================================================ */

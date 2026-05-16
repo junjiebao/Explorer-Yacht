@@ -1159,6 +1159,7 @@ select:focus-visible {
 /* 移动端响应 */
 @media (max-width: 768px) {
     .sidebar-contact {
+        position: fixed;
         top: auto;
         bottom: 60px;
         right: 10px;
@@ -1194,6 +1195,34 @@ select:focus-visible {
     .sidebar-contact__divider {
         width: 1px;
         height: 50%;
+    }
+}
+
+/* 小屏手机额外优化 */
+@media (max-width: 480px) {
+    .sidebar-contact {
+        bottom: 10px;
+        right: 10px;
+        gap: 0;
+    }
+
+    .sidebar-contact__item {
+        padding: 8px 8px 6px;
+        min-width: 56px;
+    }
+
+    .sidebar-contact__icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .sidebar-contact__icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .sidebar-contact__label {
+        font-size: 9px;
     }
 }
 

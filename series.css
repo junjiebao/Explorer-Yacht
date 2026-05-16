@@ -563,6 +563,87 @@
     line-height: 1.8;
     opacity: 0.9;
 }
+
+/* 超小屏优化 */
+@media (max-width: 480px) {
+    .series-title {
+        font-size: 2rem;
+        padding: 30px 0;
+    }
+
+    .series-hero {
+        height: 40vh;
+    }
+
+    .series-content {
+        padding: 30px 12px;
+    }
+
+    .series-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .series-content p {
+        font-size: 1rem;
+    }
+
+    .classification,
+    .target-users,
+    .case-studies,
+    .china-made {
+        padding: 20px 15px;
+    }
+
+    .classification h2,
+    .case-studies h2,
+    .china-made h2 {
+        font-size: 1.6rem;
+    }
+
+    .classification p,
+    .china-made p {
+        font-size: 1rem;
+    }
+
+    .case-content h3,
+    .case-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .case-content p {
+        font-size: 0.95rem;
+    }
+
+    .user-list li {
+        font-size: 0.95rem;
+        padding: 10px 0;
+    }
+
+    .specs {
+        grid-template-columns: 1fr;
+    }
+
+    .specs li {
+        font-size: 0.95rem;
+        padding: 8px 14px;
+    }
+
+    .brand-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .brand-item {
+        padding: 15px;
+    }
+
+    .brand-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .brand-item li {
+        font-size: 0.9rem;
+    }
 }
 
 /* ============================================================
