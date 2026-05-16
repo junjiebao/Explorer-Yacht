@@ -563,4 +563,38 @@
     line-height: 1.8;
     opacity: 0.9;
 }
+}
+
+/* ============================================================
+   统一导航覆写 — 系列页面隐藏顶部小导航，主导航置顶
+   ============================================================ */
+.top-bar { display: none !important; }
+.main-nav {
+    top: 0 !important;
+    height: 66px !important;
+    justify-content: flex-end !important;
+    padding: 0 clamp(24px, 5vw, 72px) !important;
+    background: linear-gradient(180deg, rgba(6, 23, 43, 0.9) 0%, rgba(6, 23, 43, 0.64) 100%) !important;
+    box-shadow: 0 14px 34px rgba(6, 23, 43, 0.32) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    z-index: 1000 !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.main-nav .nav-links {
+    justify-content: flex-end !important;
+    gap: clamp(28px, 3.2vw, 48px) !important;
+    padding: 0 !important;
+}
+.main-nav .nav-links a {
+    min-height: 66px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    transform: none !important;
+}
+.main-nav .dropdown-menu a {
+    min-height: 0 !important;
+    padding: 12px 18px !important;
 } 
