@@ -100,15 +100,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ── 滚动时固定导航背景 ───────────────────────────────
-    let scrollTimer;
+    let scrollTicking = false;
     window.addEventListener('scroll', function () {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        window.requestAnimationFrame(function () {
             if ((window.pageYOffset || document.documentElement.scrollTop) > 60) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
-        }, 60);
+            scrollTicking = false;
+        });
     }, { passive: true });
 });

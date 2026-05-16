@@ -814,3 +814,769 @@ body {
         padding: 0 40px;
     }
 }
+
+/* 2026 premium refresh overrides */
+:root {
+    --primary-color: #0A2342;
+    --primary-light: #3D6A9E;
+    --primary-dark: #06172B;
+    --secondary-color: #D4AF37;
+    --secondary-light: #F1D978;
+    --secondary-dark: #A9851D;
+    --silver: #C8CDD4;
+    --ink: #101820;
+    --muted: #667085;
+    --bg-light: #F4F7FA;
+    --shadow-lg: 0 18px 50px rgba(6, 23, 43, 0.16);
+    --shadow-xl: 0 26px 70px rgba(6, 23, 43, 0.24);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--ink);
+    background: #fff;
+    font-family: Inter, "Noto Sans SC", "Source Han Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(212, 175, 55, 0.8);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 3000;
+    transform: translateY(-160%);
+    padding: 10px 14px;
+    background: var(--secondary-color);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.top-bar {
+    background: rgba(6, 23, 43, 0.92);
+    border-bottom: 1px solid rgba(200, 205, 212, 0.16);
+}
+
+.main-nav {
+    padding: 22px 5%;
+    background: linear-gradient(180deg, rgba(6, 23, 43, 0.82), rgba(6, 23, 43, 0));
+}
+
+.main-nav.scrolled {
+    background: rgba(6, 23, 43, 0.94);
+    border-bottom: 1px solid rgba(200, 205, 212, 0.14);
+}
+
+.nav-links {
+    gap: clamp(20px, 3vw, 42px);
+}
+
+.nav-links a {
+    font-size: 1rem;
+    letter-spacing: 0;
+}
+
+.hero-section {
+    min-height: 720px;
+    isolation: isolate;
+}
+
+.fallback-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: opacity 700ms ease;
+}
+
+.fallback-bg.is-hidden {
+    opacity: 0;
+}
+
+.video-overlay {
+    background:
+        linear-gradient(90deg, rgba(6, 23, 43, 0.82) 0%, rgba(10, 35, 66, 0.52) 46%, rgba(6, 23, 43, 0.22) 100%),
+        linear-gradient(180deg, rgba(6, 23, 43, 0.36), rgba(6, 23, 43, 0.72));
+}
+
+.hero-content {
+    align-items: flex-start;
+    max-width: 1180px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 120px 32px 70px;
+}
+
+.hero-kicker,
+.section-eyebrow {
+    margin-bottom: 16px;
+    color: var(--secondary-light);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 820px;
+    margin-bottom: 22px;
+    font-size: clamp(2.7rem, 6vw, 5.7rem);
+    line-height: 1.02;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.hero-subtitle {
+    max-width: 720px;
+    margin-bottom: 34px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    justify-content: flex-start;
+}
+
+.transparent-button,
+.cta-button,
+.survey-link-button,
+.contact-btn-enhanced {
+    min-height: 48px;
+    border-radius: 6px;
+}
+
+.transparent-button {
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+}
+
+.transparent-button:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+    border-color: transparent;
+    color: var(--primary-dark);
+}
+
+.brand-intro {
+    padding: clamp(72px, 9vw, 120px) 8%;
+    background:
+        linear-gradient(180deg, #fff 0%, #F5F8FB 100%);
+}
+
+.section-title,
+.calculator-title {
+    color: var(--primary-color);
+    font-weight: 760;
+    letter-spacing: 0;
+}
+
+.intro-text {
+    max-width: 980px;
+    color: #344054;
+    font-size: 1.08rem;
+    line-height: 2;
+}
+
+.cost-calculator,
+.survey-link-section {
+    background:
+        radial-gradient(circle at 15% 0%, rgba(61, 106, 158, 0.12), transparent 34%),
+        linear-gradient(180deg, #F7FAFC 0%, #EEF3F7 100%) !important;
+}
+
+.cost-info-cards .info-card,
+.calculator-container {
+    border: 1px solid rgba(10, 35, 66, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 16px 45px rgba(6, 23, 43, 0.08);
+}
+
+.cost-info-cards .info-card h4 {
+    color: var(--primary-color);
+}
+
+.yacht-categories {
+    background:
+        linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    padding: clamp(70px, 8vw, 110px) 0;
+}
+
+.category-item {
+    border-radius: 8px;
+    border: 1px solid rgba(200, 205, 212, 0.2);
+    background: var(--primary-dark);
+}
+
+.category-overlay {
+    opacity: 1;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background: linear-gradient(180deg, rgba(6, 23, 43, 0.06), rgba(6, 23, 43, 0.88));
+    backdrop-filter: none;
+}
+
+.category-content {
+    width: 100%;
+    text-align: left;
+    transform: none;
+}
+
+.category-content h3 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--secondary-light);
+}
+
+.category-content h4 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+}
+
+.category-content p,
+.explore-btn {
+    opacity: 1;
+    transform: none;
+}
+
+.yacht-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 18px;
+}
+
+.yacht-specs span {
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.78rem;
+    line-height: 1;
+}
+
+.floating-cta {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1200;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid rgba(200, 205, 212, 0.28);
+    border-radius: 8px;
+    background: rgba(6, 23, 43, 0.9);
+    box-shadow: 0 18px 50px rgba(6, 23, 43, 0.25);
+    backdrop-filter: blur(16px);
+}
+
+.floating-cta a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-radius: 6px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.floating-cta__primary {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+    color: var(--primary-dark);
+}
+
+.floating-cta__secondary {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .hero-content {
+        padding: 112px 22px 58px;
+    }
+
+    .hero-section {
+        min-height: 680px;
+    }
+
+    .hero-buttons {
+        width: min(100%, 360px);
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        display: none;
+    }
+
+    .main-nav {
+        background: rgba(6, 23, 43, 0.96);
+    }
+
+    .nav-links {
+        gap: 0;
+        background: rgba(6, 23, 43, 0.98);
+    }
+
+    .nav-links a {
+        min-height: 48px;
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.45rem, 13vw, 4.2rem);
+    }
+
+    .hero-video {
+        display: none;
+    }
+
+    .fallback-bg {
+        opacity: 1;
+    }
+
+    .category-item {
+        flex-basis: min(86vw, 340px);
+        width: min(86vw, 340px);
+        height: 380px;
+    }
+
+    .category-overlay {
+        padding: 28px;
+    }
+
+    .floating-cta {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .floating-cta a {
+        flex: 1;
+        padding: 0 10px;
+    }
+}
+
+/* Explorer Yacht unified navigation - match customization page */
+.top-bar {
+    display: none !important;
+}
+
+.main-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    height: 66px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end !important;
+    padding: 0 clamp(24px, 5vw, 72px) !important;
+    background: linear-gradient(180deg, rgba(6, 23, 43, 0.9) 0%, rgba(6, 23, 43, 0.64) 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 14px 34px rgba(6, 23, 43, 0.32);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.main-nav.scrolled {
+    background: rgba(6, 23, 43, 0.94) !important;
+    box-shadow: 0 14px 34px rgba(6, 23, 43, 0.34);
+}
+
+.main-nav .nav-links {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end !important;
+    gap: clamp(28px, 3.2vw, 48px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+}
+
+.main-nav .nav-links > li {
+    position: relative;
+}
+
+.main-nav .nav-links a {
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 66px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.main-nav .nav-links a::after {
+    display: none;
+}
+
+.main-nav .nav-links a:hover,
+.main-nav .nav-links a.current-page {
+    color: #fff;
+    opacity: 0.82;
+}
+
+.main-nav .dropdown > a::after {
+    content: "▾";
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.72em;
+    line-height: 1;
+    transition: transform var(--transition-fast);
+}
+
+.main-nav .dropdown:hover > a::after,
+.main-nav .dropdown.open > a::after {
+    transform: rotate(180deg);
+}
+
+.main-nav .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 50%;
+    min-width: 190px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: rgba(6, 23, 43, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 18px 44px rgba(6, 23, 43, 0.36);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 8px);
+    transition: opacity var(--transition-base), visibility var(--transition-base), transform var(--transition-base);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.main-nav .dropdown:hover .dropdown-menu,
+.main-nav .dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.main-nav .dropdown-menu a {
+    min-height: 0;
+    display: block;
+    padding: 12px 18px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.main-nav .dropdown-menu a:hover,
+.main-nav .dropdown-menu a.current-page {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+}
+
+.main-nav .dropdown-menu a::before,
+.main-nav .dropdown-menu a::after {
+    display: none;
+}
+
+.menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        height: 58px !important;
+        justify-content: flex-end !important;
+        padding: 0 16px !important;
+        background: rgba(6, 23, 43, 0.96) !important;
+    }
+
+    .menu-btn {
+        display: flex !important;
+    }
+
+    .main-nav .nav-links {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: min(320px, 85vw);
+        height: 100vh;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 72px 0 24px !important;
+        background: rgba(6, 23, 43, 0.98) !important;
+        box-shadow: -20px 0 44px rgba(6, 23, 43, 0.34);
+        transform: translateX(100%);
+        transition: transform var(--transition-base);
+        pointer-events: none;
+        overflow-y: auto;
+    }
+
+    .main-nav .nav-links.active {
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    .main-nav .nav-links > li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .main-nav .nav-links > li > a {
+        min-height: 50px;
+        width: 100%;
+        padding: 0 24px;
+        justify-content: flex-start;
+        font-size: 1rem;
+    }
+
+    .main-nav .dropdown > a {
+        justify-content: space-between;
+    }
+
+    .main-nav .dropdown-menu {
+        position: static;
+        min-width: 100%;
+        max-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        transition: max-height var(--transition-base);
+    }
+
+    .main-nav .dropdown.open .dropdown-menu {
+        max-height: 380px;
+    }
+
+    .main-nav .dropdown:hover .dropdown-menu {
+        transform: none;
+    }
+
+    .main-nav .dropdown-menu a {
+        padding: 13px 24px 13px 38px;
+        font-size: 0.92rem;
+    }
+
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: min(320px, 85vw);
+        bottom: 0;
+        z-index: 998;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-base);
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Global background image treatment for Explorer Yacht pages */
+:root {
+    --site-background-image: url("https://images.pexels.com/photos/21207313/pexels-photo-21207313.jpeg");
+    --site-panel-light: rgba(255, 255, 255, 0.88);
+    --site-panel-soft: rgba(247, 250, 252, 0.86);
+    --site-panel-dark: rgba(6, 23, 43, 0.88);
+}
+
+html {
+    min-height: 100%;
+    background: #06172b;
+}
+
+body {
+    min-height: 100%;
+    background:
+        linear-gradient(rgba(6, 23, 43, 0.20), rgba(6, 23, 43, 0.20)),
+        var(--site-background-image) center center / cover fixed no-repeat !important;
+    background-color: #06172b !important;
+}
+
+main,
+.about-main,
+.contact-main,
+.knowledge-main,
+.customization-main,
+.portfolio-main,
+.series-main,
+.process-container {
+    background: transparent !important;
+}
+
+.brand-intro,
+.cost-calculator,
+.survey-link-section,
+.about-section,
+.contact-section,
+.knowledge-section,
+.portfolio-main,
+.series-content,
+.classification,
+.features,
+.use-cases,
+.specs,
+.faq-section,
+.process-intro,
+.process-steps,
+.guide-section,
+.content-section,
+.research-section,
+.info-section,
+.service-section {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(245, 248, 251, 0.84)),
+        var(--site-background-image) center center / cover fixed no-repeat !important;
+    background-blend-mode: normal;
+}
+
+.brand-intro,
+.cost-calculator,
+.survey-link-section {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.44), inset 0 -1px 0 rgba(6, 23, 43, 0.08);
+}
+
+.yacht-categories,
+.site-footer,
+.footer-main,
+.footer-bottom {
+    background:
+        linear-gradient(180deg, rgba(6, 23, 43, 0.92), rgba(10, 35, 66, 0.88)),
+        var(--site-background-image) center center / cover fixed no-repeat !important;
+}
+
+.info-card,
+.calculator-container,
+.calculator-form,
+.results-panel,
+.summary-card,
+.cost-breakdown,
+.ab-step,
+.ab-success,
+.contact-card,
+.contact-form,
+.knowledge-card,
+.category-card,
+.series-card,
+.feature-card,
+.spec-card,
+.case-card,
+.process-card,
+.step-card,
+.guide-card,
+.portfolio-card,
+.stat-card {
+    background: rgba(255, 255, 255, 0.90) !important;
+    border-color: rgba(10, 35, 66, 0.10) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.input-section,
+.result-section,
+.preset-scenarios,
+.form-section,
+.contact-info,
+.survey-container {
+    background: rgba(248, 250, 252, 0.88) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+section[style*="background:#f8fafc"],
+div[style*="background:#fff"],
+div[style*="background: white"],
+div[style*="background:#f7fafc"],
+div[style*="background:#f9fafb"] {
+    background: rgba(255, 255, 255, 0.90) !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        background:
+            linear-gradient(rgba(6, 23, 43, 0.22), rgba(6, 23, 43, 0.22)),
+            var(--site-background-image) center top / auto 720px repeat-y !important;
+    }
+
+    .brand-intro,
+    .cost-calculator,
+    .survey-link-section,
+    .about-section,
+    .contact-section,
+    .knowledge-section,
+    .portfolio-main,
+    .series-content,
+    .classification,
+    .features,
+    .use-cases,
+    .specs,
+    .faq-section,
+    .process-intro,
+    .process-steps,
+    .guide-section,
+    .content-section,
+    .research-section,
+    .info-section,
+    .service-section {
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 251, 0.88)),
+            var(--site-background-image) center top / auto 720px repeat-y !important;
+    }
+}

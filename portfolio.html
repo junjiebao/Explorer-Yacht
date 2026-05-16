@@ -397,25 +397,57 @@
             font-size: 1em;
         }
     }
-    </style>
+    
+
+    /* Unified Explorer navigation override */
+    .top-bar { display: none !important; }
+    .main-nav {
+        top: 0 !important;
+        height: 66px !important;
+        justify-content: flex-end !important;
+        padding: 0 clamp(24px, 5vw, 72px) !important;
+        background: linear-gradient(180deg, rgba(6, 23, 43, 0.9) 0%, rgba(6, 23, 43, 0.64) 100%) !important;
+        box-shadow: 0 14px 34px rgba(6, 23, 43, 0.32) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        z-index: 1000 !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+    .main-nav .nav-links {
+        justify-content: flex-end !important;
+        gap: clamp(28px, 3.2vw, 48px) !important;
+        padding: 0 !important;
+    }
+    .main-nav .nav-links a {
+        min-height: 66px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        transform: none !important;
+    }
+    .main-nav .dropdown-menu a {
+        min-height: 0 !important;
+        padding: 12px 18px !important;
+    }
+</style>
 </head>
 <body>
     <!-- 顶部小导航 -->
-    <div class="top-bar">
+    <header class="top-bar">
         <a href="index.html" class="brand">
             <img src="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg/r%5Bwidth%5D=32&r%5Bheight%5D=32/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.webp" 
                  alt="探险游艇"
                  class="brand-icon">
             <span>探险游艇 | Explorer Yacht</span>
         </a>
-    </div>
+    </header>
 
-    <!-- 复用顶部导航 -->
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="主导航">
         <ul class="nav-links">
             <li><a href="index.html">首页</a></li>
             <li class="dropdown">
-                <a href="index.html">探险游艇分类</a>
+                <a href="portfolio.html" class="current-page">探险游艇分类</a>
                 <ul class="dropdown-menu">
                     <li><a href="circumnavigation.html">环球探险游艇</a></li>
                     <li><a href="research.html">科考探险游艇</a></li>
@@ -431,9 +463,9 @@
         </ul>
         <button class="menu-btn" aria-label="打开菜单" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     </nav>
-<div class="nav-overlay"></div>
+    <div class="nav-overlay"></div>
 
-    <main class="portfolio-main">
+<main class="portfolio-main">
         <h1 class="portfolio-title">探险游艇分类</h1>
         
         <div class="portfolio-grid">

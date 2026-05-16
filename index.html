@@ -249,22 +249,22 @@
     <link rel="preconnect" href="https://cdn.boatinternational.com" crossorigin>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
     <!-- 顶部小导航 -->
-    <div class="top-bar">
+    <header class="top-bar">
         <a href="index.html" class="brand">
             <img src="https://cdn.boatinternational.com/convert/bi_prd/bi/library_images/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.jpg/r%5Bwidth%5D=32&r%5Bheight%5D=32/FaUrHK5kTmy8gpEoSKW4_oceanxplorer-sea-trials.webp" 
                  alt="探险游艇"
                  class="brand-icon">
             <span>探险游艇 | Explorer Yacht</span>
         </a>
-    </div>
+    </header>
 
-    <!-- 主导航栏 -->
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="主导航">
         <ul class="nav-links">
             <li><a href="index.html" class="current-page">首页</a></li>
             <li class="dropdown">
-                <a href="index.html">探险游艇分类</a>
+                <a href="portfolio.html">探险游艇分类</a>
                 <ul class="dropdown-menu">
                     <li><a href="circumnavigation.html">环球探险游艇</a></li>
                     <li><a href="research.html">科考探险游艇</a></li>
@@ -280,9 +280,10 @@
         </ul>
         <button class="menu-btn" aria-label="打开菜单" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     </nav>
-<div class="nav-overlay"></div>
+    <div class="nav-overlay"></div>
 
-    <!-- 全屏视频背景 -->
+<!-- 全屏视频背景 -->
+    <main id="main-content">
     <div class="hero-section">
         <div class="video-overlay"></div>
         <!-- 添加后备背景图片 -->
@@ -293,18 +294,18 @@
             loop 
             playsinline 
             webkit-playsinline="true"
+            preload="metadata"
+            poster="images/极地探险.jpg"
             class="hero-video"
+            aria-hidden="true"
             onerror="this.style.display='none'; document.querySelector('.fallback-bg').style.display='block';"
-            onloadstart="console.log('Video loading started');"
-            oncanplay="console.log('Video can start playing');"
         >
             <source src="videos/yacht-bg.mp4.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
-            <h1>创造
-                <span class="highlight">难忘</span>
-                探险体验
-            </h1>
+            <p class="hero-kicker">New Yachting FZE, LLC</p>
+            <h1>高端探险游艇定制与远航服务</h1>
+            <p class="hero-subtitle">服务迪拜、香港、深圳、海南及全球华人船东，覆盖环球航行、极地探险、科考远航与船东运营管理。</p>
             <div class="hero-buttons">
                 <a href="portfolio.html" class="transparent-button">
                     浏览探险游艇种类
@@ -323,24 +324,25 @@
     </div>
 
     <!-- hero-section 后，brand-intro 前添加 -->
-    <section id="cost-calculator" class="cost-calculator">
-        <h2 class="calculator-title">探险游艇持有成本估算</h2>
+    <section id="cost-calculator" class="cost-calculator" aria-labelledby="cost-title">
+        <div class="section-eyebrow">Ownership Planning</div>
+        <h2 id="cost-title" class="calculator-title">探险游艇持有成本估算</h2>
         
         <!-- 成本说明卡片 -->
         <div class="cost-info-cards">
             <div class="info-card">
-                <h4>💰 持有成本构成</h4>
+                <h4>持有成本构成</h4>
                 <ul>
                     <li>固定成本(60-70%): 船员、保险、泊位</li>
                     <li>变动成本(30-40%): 燃料、维护、备件</li>
                 </ul>
             </div>
             <div class="info-card">
-                <h4>📊 行业基准</h4>
+                <h4>行业基准</h4>
                 <p>探险游艇年持有成本通常为购置价的<strong>8-12%</strong></p>
             </div>
             <div class="info-card">
-                <h4>🌍 New Yachting优势</h4>
+                <h4>New Yachting优势</h4>
                 <p>在迪拜、香港、深圳提供本地化服务，可节省<strong>15-25%</strong>运营成本</p>
             </div>
         </div>
@@ -1451,9 +1453,10 @@
 
     <!-- 品牌介绍 -->
     <section class="brand-intro">
+        <div class="section-eyebrow">Explorer Yacht Specialist</div>
         <h2 class="section-title">探险游艇专家</h2>
         <p class="intro-text">
-            近年来，探险游艇在世界范围内广泛受到重视和追捧，而且在东亚和东南亚市场逐渐崭露头角，引了越来越多的目光，也成为亚洲和华人市场的新宠儿。许多著名游艇制造厂、中小规模的造船企业，以及新兴品牌，都在这一领域展现出极大的兴趣。探险游艇融合了科技、冒险精和卓越舒适体验，既满足了船东们对广阔未知海域的探索渴望，也象征了一种蓝色生活方式的全新表达，代表着个人品位的升和生活方式的多样化追求。
+            近年来，探险游艇在世界范围内广泛受到重视和追捧，而且在东亚和东南亚市场逐渐崭露头角，吸引了越来越多的目光，也成为亚洲和华人市场的新宠儿。许多著名游艇制造厂、中小规模的造船企业，以及新兴品牌，都在这一领域展现出极大的兴趣。探险游艇融合了科技、冒险精神和卓越舒适体验，既满足了船东们对广阔未知海域的探索渴望，也象征了一种蓝色生活方式的全新表达，代表着个人品位的提升和生活方式的多样化追求。
         </p>
     </section>
 
@@ -1474,7 +1477,12 @@
                             <div class="divider"></div>
                             <h4>环球探险系列</h4>
                             <p>专为环球航行设计，配备顶级导航系统和持久续航能力。搭载多重备用动力系统，确保您的环球之旅安全无忧。</p>
-                            <span class="explore-btn">探索列 →</span>
+                            <div class="yacht-specs" aria-label="环球探险系列参数">
+                                <span>30-80m</span>
+                                <span>8-18客</span>
+                                <span>远洋级</span>
+                            </div>
+                            <span class="explore-btn">探索系列 →</span>
                         </div>
                     </div>
                 </a>
@@ -1491,7 +1499,12 @@
                             <h3>RESEARCH EXPLORER</h3>
                             <div class="divider"></div>
                             <h4>科考探险系列</h4>
-                            <p>配备专业洋研究设备，支持深海考察与科学研究。专业实验室空间，助力海洋科研事业。</p>
+                            <p>配备专业海洋研究设备，支持深海考察与科学研究。专业实验室空间，助力海洋科研事业。</p>
+                            <div class="yacht-specs" aria-label="科考探险系列参数">
+                                <span>实验室</span>
+                                <span>ROV支持</span>
+                                <span>长续航</span>
+                            </div>
                             <span class="explore-btn">探索系列 →</span>
                         </div>
                     </div>
@@ -1507,7 +1520,12 @@
                             <h3>POLAR EXPLORER</h3>
                             <div class="divider"></div>
                             <h4>极地探险系列</h4>
-                            <p>专为极地造，配备破冰能力和极寒护系统。搭载先进导航设备，确保极地探险安全可靠。</p>
+                            <p>专为极地打造，配备破冰能力和极寒防护系统。搭载先进导航设备，确保极地探险安全可靠。</p>
+                            <div class="yacht-specs" aria-label="极地探险系列参数">
+                                <span>冰区船级</span>
+                                <span>低温系统</span>
+                                <span>探险甲板</span>
+                            </div>
                             <span class="explore-btn">探索系列 →</span>
                         </div>
                     </div>
@@ -1523,7 +1541,12 @@
                             <h3>LONG RANGE CRUISER</h3>
                             <div class="divider"></div>
                             <h4>远航探险系列</h4>
-                            <p>超大燃料容量设计，配智能能源管理系统。完善的休闲设施与储存空间，让远航生活舒适自在。</p>
+                            <p>超大燃料容量设计，配备智能能源管理系统。完善的休闲设施与储存空间，让远航生活舒适自在。</p>
+                            <div class="yacht-specs" aria-label="远航探险系列参数">
+                                <span>高燃油量</span>
+                                <span>低油耗</span>
+                                <span>跨洋航程</span>
+                            </div>
                             <span class="explore-btn">探索系列 →</span>
                         </div>
                     </div>
@@ -1540,6 +1563,11 @@
                             <div class="divider"></div>
                             <h4>短距探险系列</h4>
                             <p>灵活机动的设计理念，适合近海探索与短期航行。优化的动力系统与操控性能，带来轻松愉悦的探险体验。</p>
+                            <div class="yacht-specs" aria-label="短距探险系列参数">
+                                <span>灵活泊靠</span>
+                                <span>浅吃水</span>
+                                <span>周末航线</span>
+                            </div>
                             <span class="explore-btn">探索系列 →</span>
                         </div>
                     </div>
@@ -1577,30 +1605,15 @@
         });
         
         const video = document.querySelector('.hero-video');
-        
-        // 监听视频加载状态
-        video.addEventListener('loadeddata', function() {
-            console.log('Video loaded successfully');
-        });
-        
-        video.addEventListener('error', function(e) {
-            console.error('Video error:', e);
-            console.error('Video error code:', video.error.code);
-            console.error('Video error message:', video.error.message);
-            console.error('Video src:', video.currentSrc);
-        });
-        
-        // 检查视频文件是否存在
-        fetch('./videos/yacht-bg.mp4.mp4')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Video file not found');
-                }
-                console.log('Video file exists');
-            })
-            .catch(error => {
-                console.error('Error checking video file:', error);
+        const fallback = document.querySelector('.fallback-bg');
+        if (video && fallback) {
+            video.addEventListener('canplay', function() {
+                fallback.classList.add('is-hidden');
+            }, { once: true });
+            video.addEventListener('error', function() {
+                fallback.classList.remove('is-hidden');
             });
+        }
     });
     </script>
 
@@ -1657,7 +1670,12 @@
         margin-left: 10px;
     }
     </style>
-</body>
+    </main>
+
+    <div class="floating-cta" aria-label="快速咨询">
+        <a href="contact.html" class="floating-cta__primary">预约看艇</a>
+        <a href="mailto:Build@tanxianyouting.com" class="floating-cta__secondary" aria-label="发送邮件咨询新建游艇">邮件咨询</a>
+    </div>
 
     <!-- 统一的页脚 -->
     <footer class="site-footer">
