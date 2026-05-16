@@ -104,6 +104,27 @@
     margin: 0 auto;
 }
 
+/* 高对比船级分类信息块 */
+.classification {
+    background:
+        linear-gradient(135deg, rgba(6, 23, 43, 0.96), rgba(10, 35, 66, 0.92)),
+        var(--site-background-image, none) center center / cover no-repeat !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(212, 175, 55, 0.34);
+    box-shadow: 0 22px 52px rgba(6, 23, 43, 0.30);
+}
+
+.classification h2 {
+    color: #f1d978 !important;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+.classification p {
+    color: #f8fafc !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.22);
+}
+
 /* 特点部分样式优化 */
 .features {
     margin-bottom: 60px;

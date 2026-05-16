@@ -48,19 +48,24 @@
     left: 0;
     right: 0;
     padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: var(--text-light);
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.88));
+    color: #ffffff;
 }
 
 .portfolio-content h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: var(--secondary-color);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 .portfolio-content p {
     font-size: 1rem;
     margin-bottom: 15px;
-    opacity: 0.9;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    line-height: 1.5;
 }
 
 .portfolio-btn {
