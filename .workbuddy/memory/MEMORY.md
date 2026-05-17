@@ -18,6 +18,7 @@
 | longrange.html | 远航探险游艇 | series.css |
 | regional.html | 短距探险游艇 | series.css |
 | buying-process.html | 购买流程 | buying-process.css |
+| ebook.html | 电子书推广页（探险游艇行业新宠儿） | ebook.css |
 | admin-login.html | 管理后台登录 | (内联) |
 | admin.html | 管理后台 | (内联) |
 
@@ -47,3 +48,12 @@
 - 3 个无关页面（blog.html, buy.html, rent.html）已删除
 - 12 个面向用户页面内联 `<style>` 块全部归零
 - **P1:** Portfolio 游艇分类卡片文字可读性修复 — 增强渐变覆盖、标题金色高亮、文本阴影加持
+- 电子书独立页面（ebook.html + ebook.css）创建，含3D书籍模型、章节展示、作者卡片、CTA表单
+- portfolio.css / knowledge.css 中所有 ebook-* 样式已删除，知识库"购买指南"版块用独立 `.buying-guide-cta` 类替代
+- 全站 12 个用户页面主导航 + 页脚均添加"电子书"链接
+- **longrange.html / regional.html 页脚补全** — 从简陋版权文字升级为完整 site-footer 四栏结构
+- **首页移除游艇分类5卡片模块** — index.html 中 `<section class="yacht-categories">` 已删除
+- **二手游艇购买指南移动** — 从 knowledge.html 移至 about.html 经纪顾问模块下方，样式迁移至 about.css
+- **ebook.html CTA 改为 Kdocs 直链** — 移除邮箱表单，"立即获取"直接跳转 https://www.kdocs.cn/l/cf14UpVftfVq
+- **contact.html 移除业务邮箱模块 + 阿曼联系方式** — 含所有 SEO meta/结构化数据中的 Oman 引用清理
+- **全站页脚"服务项目"→"探险游艇类别"** — 10 个 HTML 文件批量替换

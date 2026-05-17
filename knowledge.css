@@ -221,97 +221,52 @@ section h2 {
     }
 } 
 
-/* 电子书部分样式 */
-.ebook-section {
-    margin: 40px 0;
-    padding: 30px;
+/* 购买指南入口样式 */
+.buying-guide-cta {
+    margin: 40px auto;
+    padding: 40px 30px;
     background: var(--primary-color);
     border-radius: 15px;
     color: var(--text-light);
     max-width: 800px;
-    margin: 40px auto;
-}
-
-.ebook-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 50px;
-}
-
-.ebook-info {
-    flex: 1;
-    padding-right: 30px;
     text-align: center;
-    margin-right: 20px;
 }
 
-.ebook-info h3 {
+.buying-guide-cta h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.buying-guide-cta h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
     font-weight: bold;
-    text-align: center;
 }
 
-.ebook-info p {
+.buying-guide-cta p {
     font-size: 1.1rem;
     margin: 15px 0;
     opacity: 0.9;
-    text-align: center;
 }
 
-.ebook-link {
+.buying-guide-cta .btn {
     display: inline-block;
     margin-top: 15px;
-    padding: 10px 20px;
+    padding: 12px 28px;
     background: var(--secondary-color);
-    color: var(--text-light);
+    color: var(--text-dark);
     text-decoration: none;
     border-radius: 25px;
-    transition: transform 0.3s ease;
     font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.ebook-link:hover {
-    transform: translateX(5px);
+.buying-guide-cta .btn:hover {
     background: #f0c04c;
-}
-
-.ebook-qr {
-    text-align: center;
-    flex-shrink: 0;
-    margin-left: -50px;
-}
-
-.ebook-qr img {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 10px;
-}
-
-.ebook-qr p {
-    font-size: 1rem;
-    opacity: 0.9;
-}
-
-/* 响应式调整 */
-@media (max-width: 600px) {
-    .ebook-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .ebook-info {
-        padding-right: 0;
-        text-align: center;
-    }
-
-    .ebook-qr img {
-        width: 220px;
-        height: 220px;
-        margin: 20px auto;
-    }
+    transform: translateY(-2px);
 }
 
 /* 超小屏优化 */
@@ -345,17 +300,20 @@ section h2 {
         padding: 18px;
     }
 
-    .ebook-section {
-        padding: 20px;
+    .buying-guide-cta {
+        padding: 24px 18px;
     }
 
-    .ebook-info h3 {
-        font-size: 1.4rem;
+    .buying-guide-cta h3 {
+        font-size: 1.3rem;
     }
-}
 
-.ebook-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    .buying-guide-cta p {
+        font-size: 0.95rem;
+    }
+
+    .buying-guide-cta .btn {
+        padding: 10px 22px;
+        font-size: 1rem;
+    }
 }

@@ -159,89 +159,6 @@
     }
 }
 
-/* 在文件末尾添加以下样式 */
-.ebook-section {
-    background: linear-gradient(135deg, #004080 0%, #002147 100%);
-    max-width: 1200px;
-    margin: 0 auto 50px;
-    padding: 30px 40px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    width: 90%;
-}
-
-.ebook-container {
-    flex: 1;
-    padding-right: 40px;
-}
-
-.ebook-title {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.ebook-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.ebook-button {
-    display: inline-block;
-    background: #E6B422;
-    color: #000;
-    padding: 12px 30px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.ebook-button:hover {
-    background: #f0c04c;
-}
-
-.qr-code {
-    text-align: center;
-}
-
-.qr-code img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-}
-
-.qr-code p {
-    font-size: 1rem;
-    color: white;
-}
-
-@media (max-width: 768px) {
-    .ebook-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 25px 20px;
-        margin-bottom: 30px;
-    }
-    
-    .ebook-container {
-        padding-right: 0;
-        margin-bottom: 30px;
-    }
-    
-    .ebook-title {
-        font-size: 1.8rem;
-    }
-    
-    .ebook-subtitle {
-        font-size: 1rem;
-    }
-}
-
 /* 超小屏优化 */
 @media (max-width: 480px) {
     .portfolio-main {
@@ -271,30 +188,6 @@
         font-size: 0.9rem;
     }
 
-    .ebook-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px 15px;
-        width: 95%;
-    }
-
-    .ebook-container {
-        padding-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .ebook-title {
-        font-size: 1.4rem;
-    }
-
-    .ebook-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .qr-code img {
-        width: 120px;
-        height: 120px;
-    }
 }
 
 /* ============================================================

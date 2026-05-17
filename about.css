@@ -636,3 +636,80 @@
 @media (max-width: 400px) {
     .ab-og.cols3 { grid-template-columns: 1fr; }
 }
+
+/* 二手游艇购买指南 */
+.buying-guide-section {
+    padding: 60px 0;
+    background: var(--text-light);
+}
+
+.buying-guide-cta {
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: var(--primary-color);
+    border-radius: 15px;
+    color: var(--text-light);
+    max-width: 800px;
+    text-align: center;
+}
+
+.buying-guide-cta h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.buying-guide-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.buying-guide-cta p {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    opacity: 0.9;
+}
+
+.buying-guide-cta .btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    background: var(--secondary-color);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.buying-guide-cta .btn:hover {
+    background: #f0c04c;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .buying-guide-section {
+        padding: 40px 0;
+    }
+
+    .buying-guide-cta {
+        padding: 24px 18px;
+        margin: 0 12px;
+    }
+
+    .buying-guide-cta h3 {
+        font-size: 1.3rem;
+    }
+
+    .buying-guide-cta p {
+        font-size: 0.95rem;
+    }
+
+    .buying-guide-cta .btn {
+        padding: 10px 22px;
+        font-size: 1rem;
+    }
+}
