@@ -1,12 +1,13 @@
+﻿/* 探险游艇分类页样式 - 暗色主题 */
 .portfolio-main {
     padding-top: 120px;
     min-height: 100vh;
-    background: var(--primary-color);
+    background: #060c18;
 }
 
 .portfolio-title {
     text-align: center;
-    color: #f1d978;
+    color: #e8c98a;
     font-size: 3rem;
     font-weight: 700;
     line-height: 1.25;
@@ -14,12 +15,11 @@
     margin: 0 auto 50px;
     padding: 40px clamp(24px, 5vw, 56px);
     border-radius: 8px;
-    background:
-        linear-gradient(135deg, rgba(6, 23, 43, 0.96), rgba(10, 35, 66, 0.92)),
-        var(--site-background-image, none) center center / cover no-repeat;
-    border: 1px solid rgba(212, 175, 55, 0.34);
-    box-shadow: 0 22px 52px rgba(6, 23, 43, 0.30);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+    background: linear-gradient(135deg, rgba(6,12,24,0.96), rgba(10,35,66,0.92));
+    border: 1px solid rgba(201,169,110,0.2);
+    box-shadow: 0 22px 52px rgba(0,0,0,0.3);
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
 }
 
 .portfolio-grid {
@@ -34,192 +34,63 @@
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     transition: transform 0.3s ease;
+    border: 1px solid rgba(201,169,110,0.08);
 }
+.portfolio-item:hover { transform: translateY(-5px); }
 
-.portfolio-item:hover {
-    transform: translateY(-5px);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
+.portfolio-item img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.3s ease; }
+.portfolio-item:hover img { transform: scale(1.1); }
 
 .portfolio-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.88));
-    color: #ffffff;
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(2,4,10,0.92));
+    color: #f0ede8;
 }
-
 .portfolio-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-size: 1.5rem; margin-bottom: 10px;
+    color: #c9a96e; text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    font-weight: 700; letter-spacing: 0.02em;
 }
-
-.portfolio-content p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-    line-height: 1.5;
-}
+.portfolio-content p { font-size: 1rem; margin-bottom: 15px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); line-height: 1.5; }
 
 .portfolio-btn {
-    display: inline-block;
-    padding: 8px 20px;
-    background: var(--secondary-color);
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: 4px;
+    display: inline-block; padding: 8px 20px;
+    background: #c9a96e; color: #060c18;
+    text-decoration: none; border-radius: 4px;
+    font-family: "Montserrat", sans-serif; font-weight: 600;
     transition: background 0.3s ease;
 }
-
-.portfolio-btn:hover {
-    background: #f0c04c;
-}
+.portfolio-btn:hover { background: #e8c98a; }
 
 @media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        margin-bottom: 20px;
-    }
-    
-    .portfolio-title {
-        font-size: 2rem;
-        padding: 32px 24px;
-    }
-} 
-
-/* 顶部导航栏过渡动画 */
-.top-bar {
-    transition: transform 0.3s ease-in-out;
+    .portfolio-grid { grid-template-columns: 1fr; margin-bottom: 20px; }
+    .portfolio-title { font-size: 2rem; padding: 32px 24px; }
 }
 
-.top-bar.hidden {
-    transform: translateY(-100%);
-}
+.top-bar { transition: transform 0.3s ease-in-out; }
+.top-bar.hidden { transform: translateY(-100%); }
 
-/* 探险游艇介绍文字样式 */
-.intro-text {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 5%;
-}
-
+.intro-text { max-width: 1200px; margin: 30px auto; padding: 0 5%; }
 .text-content {
-    line-height: 1.8;
-    color: #f8fafc;
-    padding: 40px;
+    line-height: 1.8; color: #f0ede8; padding: 40px;
     border-radius: 8px;
-    background:
-        linear-gradient(135deg, rgba(6, 23, 43, 0.96), rgba(10, 35, 66, 0.92)),
-        var(--site-background-image, none) center center / cover no-repeat;
-    border: 1px solid rgba(212, 175, 55, 0.34);
-    box-shadow: 0 22px 52px rgba(6, 23, 43, 0.30);
+    background: linear-gradient(135deg, rgba(6,12,24,0.96), rgba(10,35,66,0.92));
+    border: 1px solid rgba(201,169,110,0.15);
+    box-shadow: 0 22px 52px rgba(0,0,0,0.3);
 }
+.text-content p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(240,237,232,0.75); }
+.text-content p:last-child { margin-bottom: 0; }
 
-.text-content p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: #f8fafc;
-    opacity: 1;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.22);
-}
-
-.text-content p:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-    .intro-text {
-        margin: 20px auto;
-    }
-    
-    .text-content p {
-        font-size: 1rem;
-    }
-
-    .text-content {
-        padding: 28px 22px;
-    }
-}
-
-/* 超小屏优化 */
+@media (max-width: 768px) { .intro-text { margin: 20px auto; } .text-content p { font-size: 1rem; } .text-content { padding: 28px 22px; } }
 @media (max-width: 480px) {
-    .portfolio-main {
-        padding-top: 80px;
-    }
-
-    .portfolio-title {
-        font-size: 1.6rem;
-        margin-bottom: 25px;
-        padding: 24px 18px;
-    }
-
-    .portfolio-grid {
-        gap: 15px;
-        padding: 0 12px;
-    }
-
-    .portfolio-item img {
-        height: 220px;
-    }
-
-    .portfolio-content h2 {
-        font-size: 1.2rem;
-    }
-
-    .portfolio-content p {
-        font-size: 0.9rem;
-    }
-
+    .portfolio-main { padding-top: 80px; }
+    .portfolio-title { font-size: 1.6rem; margin-bottom: 25px; padding: 24px 18px; }
+    .portfolio-grid { gap: 15px; padding: 0 12px; }
+    .portfolio-item img { height: 220px; }
+    .portfolio-content h2 { font-size: 1.2rem; }
+    .portfolio-content p { font-size: 0.9rem; }
 }
 
-/* ============================================================
-   统一导航覆写 — 隐藏顶部小导航，主导航置顶
-   ============================================================ */
 .top-bar { display: none !important; }
-.main-nav {
-    top: 0 !important;
-    height: 66px !important;
-    justify-content: flex-end !important;
-    padding: 0 clamp(24px, 5vw, 72px) !important;
-    background: linear-gradient(180deg, rgba(6, 23, 43, 0.9) 0%, rgba(6, 23, 43, 0.64) 100%) !important;
-    box-shadow: 0 14px 34px rgba(6, 23, 43, 0.32) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    z-index: 1000 !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-}
-.main-nav .nav-links {
-    justify-content: flex-end !important;
-    gap: clamp(28px, 3.2vw, 48px) !important;
-    padding: 0 !important;
-}
-.main-nav .nav-links a {
-    min-height: 66px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    transform: none !important;
-}
-.main-nav .dropdown-menu a {
-    min-height: 0 !important;
-    padding: 12px 18px !important;
-}

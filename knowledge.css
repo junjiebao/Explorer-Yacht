@@ -1,319 +1,41 @@
-/* 知识页面样式 */
-.knowledge-main {
-    padding-top: 120px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 50px;
-}
+﻿/* 知识页面样式 - 暗色主题 */
+.knowledge-main { padding-top: 120px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; background: #060c18; }
+.intro { text-align: center; margin-bottom: 50px; padding: 0 20px; }
+.intro h1 { font-size: 2.5em; color: #f0ede8; margin-bottom: 20px; font-family: "Cormorant Garamond", serif; font-weight: 300; }
+.intro .subtitle { font-size: 1.2em; color: rgba(240,237,232,0.7); margin-bottom: 30px; }
+.intro-text { max-width: 800px; margin: 0 auto; line-height: 1.8; color: rgba(240,237,232,0.65); }
+section { margin-bottom: 60px; padding: 0 20px; }
+section h2 { color: #f0ede8; font-size: 2em; margin-bottom: 30px; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 300; }
+.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+.grid-item { background: rgba(10,15,30,0.6); border: 1px solid rgba(201,169,110,0.08); padding: 25px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.grid-item h3 { color: #c9a96e; margin-bottom: 15px; font-family: "Noto Serif SC", serif; }
+.grid-item ul { list-style: none; padding: 0; }
+.grid-item li { margin-bottom: 10px; padding-left: 20px; position: relative; color: rgba(240,237,232,0.65); }
+.grid-item li:before { content: "\2022"; color: #c9a96e; position: absolute; left: 0; }
+.feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.feature-item { background: rgba(10,15,30,0.6); border: 1px solid rgba(201,169,110,0.08); padding: 25px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.feature-item h3 { color: #c9a96e; margin-bottom: 15px; font-family: "Noto Serif SC", serif; }
+@media (max-width: 768px) { .knowledge-main { padding-top: 100px; } .intro h1 { font-size: 2em; } .content-grid { grid-template-columns: 1fr; } .feature-list { grid-template-columns: 1fr; } }
+.top-bar { transition: transform 0.3s ease-in-out; }
+.top-bar.hidden { transform: translateY(-100%); }
 
-.intro {
-    text-align: center;
-    margin-bottom: 50px;
-    padding: 0 20px;
-}
+.portfolio-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; padding: 30px 0; width: 150%; margin: 30px -25%; background: linear-gradient(180deg, rgba(13,34,64,0.4), rgba(6,12,24,0.8)); }
+.portfolio-item { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.3s ease; border: 1px solid rgba(201,169,110,0.06); }
+.portfolio-item:hover { transform: translateY(-5px); }
+.portfolio-item img { width: 100%; height: 320px; object-fit: cover; transition: transform 0.3s ease; }
+.portfolio-item:hover img { transform: scale(1.1); }
+.portfolio-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(2,4,10,0.92)); color: #f0ede8; }
+.portfolio-content h2 { font-size: 1.2rem; margin-bottom: 10px; color: #c9a96e; }
+.portfolio-content p { font-size: 0.9rem; margin-bottom: 15px; opacity: 0.9; color: rgba(240,237,232,0.7); }
+.portfolio-btn { display: inline-block; padding: 8px 20px; background: #c9a96e; color: #060c18; text-decoration: none; border-radius: 4px; font-family: "Montserrat", sans-serif; font-weight: 600; transition: background 0.3s ease; }
+.portfolio-btn:hover { background: #e8c98a; }
+@media (max-width: 1200px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); width: 100%; margin: 30px 0; padding: 30px 2%; } }
+@media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } .portfolio-item img { height: 300px; } .portfolio-content h2 { font-size: 1.5rem; } .portfolio-content p { font-size: 1rem; } }
 
-.intro h1 {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.intro .subtitle {
-    font-size: 1.2em;
-    color: var(--text-dark);
-    margin-bottom: 30px;
-}
-
-.intro-text {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-section {
-    margin-bottom: 60px;
-    padding: 0 20px;
-}
-
-section h2 {
-    color: var(--primary-color);
-    font-size: 2em;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.grid-item {
-    background: #f5f5f5;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.grid-item h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.grid-item ul {
-    list-style: none;
-    padding: 0;
-}
-
-.grid-item li {
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.grid-item li:before {
-    content: "•";
-    color: var(--secondary-color);
-    position: absolute;
-    left: 0;
-}
-
-.feature-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.feature-item {
-    background: #f5f5f5;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.feature-item h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .knowledge-main {
-        padding-top: 100px;
-    }
-
-    .intro h1 {
-        font-size: 2em;
-    }
-
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-list {
-        grid-template-columns: 1fr;
-    }
-} 
-
-/* 顶部导航栏过渡动画 */
-.top-bar {
-    transition: transform 0.3s ease-in-out;
-}
-
-.top-bar.hidden {
-    transform: translateY(-100%);
-} 
-
-/* 游艇分类展示样式 */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    padding: 30px 0;
-    width: 150%;
-    margin: 30px -25%;
-    background: var(--primary-color);
-}
-
-.portfolio-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-5px);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    color: var(--text-light);
-}
-
-.portfolio-content h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.portfolio-content p {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    opacity: 0.9;
-}
-
-.portfolio-btn {
-    display: inline-block;
-    padding: 8px 20px;
-    background: var(--secondary-color);
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-}
-
-.portfolio-btn:hover {
-    background: #f0c04c;
-}
-
-@media (max-width: 1200px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-        margin: 30px 0;
-        padding: 30px 2%;
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .portfolio-item img {
-        height: 300px;
-    }
-
-    .portfolio-content h2 {
-        font-size: 1.5rem;
-    }
-
-    .portfolio-content p {
-        font-size: 1rem;
-    }
-} 
-
-/* 购买指南入口样式 */
-.buying-guide-cta {
-    margin: 40px auto;
-    padding: 40px 30px;
-    background: var(--primary-color);
-    border-radius: 15px;
-    color: var(--text-light);
-    max-width: 800px;
-    text-align: center;
-}
-
-.buying-guide-cta h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-}
-
-.buying-guide-cta h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.buying-guide-cta p {
-    font-size: 1.1rem;
-    margin: 15px 0;
-    opacity: 0.9;
-}
-
-.buying-guide-cta .btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 28px;
-    background: var(--secondary-color);
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.buying-guide-cta .btn:hover {
-    background: #f0c04c;
-    transform: translateY(-2px);
-}
-
-/* 超小屏优化 */
-@media (max-width: 480px) {
-    .knowledge-main {
-        padding-top: 80px;
-    }
-
-    .intro h1 {
-        font-size: 1.6em;
-    }
-
-    .intro .subtitle {
-        font-size: 1em;
-    }
-
-    .intro-text {
-        font-size: 0.9em;
-    }
-
-    section {
-        margin-bottom: 35px;
-        padding: 0 12px;
-    }
-
-    section h2 {
-        font-size: 1.5em;
-    }
-
-    .grid-item {
-        padding: 18px;
-    }
-
-    .buying-guide-cta {
-        padding: 24px 18px;
-    }
-
-    .buying-guide-cta h3 {
-        font-size: 1.3rem;
-    }
-
-    .buying-guide-cta p {
-        font-size: 0.95rem;
-    }
-
-    .buying-guide-cta .btn {
-        padding: 10px 22px;
-        font-size: 1rem;
-    }
-}
+.buying-guide-cta { margin: 40px auto; padding: 40px 30px; background: linear-gradient(135deg, rgba(10,15,30,0.9), rgba(6,12,24,0.95)); border: 1px solid rgba(201,169,110,0.15); border-radius: 15px; color: #f0ede8; max-width: 800px; text-align: center; }
+.buying-guide-cta h2 { text-align: center; margin-bottom: 20px; font-size: 1.5rem; color: #c9a96e; font-family: "Cormorant Garamond", serif; }
+.buying-guide-cta h3 { font-size: 1.8rem; margin-bottom: 10px; font-weight: bold; color: #f0ede8; }
+.buying-guide-cta p { font-size: 1.1rem; margin: 15px 0; opacity: 0.9; color: rgba(240,237,232,0.65); }
+.buying-guide-cta .btn { display: inline-block; margin-top: 15px; padding: 12px 28px; background: #c9a96e; color: #060c18; text-decoration: none; border-radius: 25px; font-size: 1.1rem; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease; }
+.buying-guide-cta .btn:hover { background: #e8c98a; transform: translateY(-2px); }
+@media (max-width: 480px) { .knowledge-main { padding-top: 80px; } .intro h1 { font-size: 1.6em; } .intro .subtitle { font-size: 1em; } .intro-text { font-size: 0.9em; } section { margin-bottom: 35px; padding: 0 12px; } section h2 { font-size: 1.5em; } .grid-item { padding: 18px; } .buying-guide-cta { padding: 24px 18px; } .buying-guide-cta h3 { font-size: 1.3rem; } .buying-guide-cta p { font-size: 0.95rem; } .buying-guide-cta .btn { padding: 10px 22px; font-size: 1rem; } }

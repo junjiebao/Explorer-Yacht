@@ -1,216 +1,26 @@
-/* 购买流程页面样式 */
-.process-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.process-intro {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-    border-radius: 15px;
-}
-
-.process-intro h1 {
-    color: #2d3748;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.process-intro p {
-    color: #4a5568;
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.process-step {
-    margin-bottom: 50px;
-    padding: 30px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.process-step h2 {
-    color: #2b6cb0;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.step-number {
-    background: #2b6cb0;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    font-size: 0.8em;
-}
-
-.process-step ul {
-    list-style: none;
-    padding: 0;
-}
-
-.process-step li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-    line-height: 1.6;
-}
-
-.process-step li:before {
-    content: "•";
-    color: #2b6cb0;
-    font-size: 1.5em;
-    position: absolute;
-    left: 0;
-    top: -2px;
-}
-
-.additional-resources {
-    background: #f8fafc;
-    padding: 30px;
-    border-radius: 15px;
-    margin-top: 50px;
-}
-
-.additional-resources h3 {
-    color: #2d3748;
-    margin-bottom: 20px;
-}
-
-.additional-resources ul {
-    list-style: none;
-    padding: 0;
-}
-
-.additional-resources li {
-    margin-bottom: 10px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.additional-resources li:before {
-    content: "→";
-    color: #2b6cb0;
-    position: absolute;
-    left: 0;
-}
-
-.service-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    margin-left: 15px;
-    background: #2b6cb0;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-}
-
-.service-btn:hover {
-    background: #2c5282;
-    transform: translateY(-2px);
-}
-
-.service-btn .arrow {
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-}
-
-.service-btn:hover .arrow {
-    transform: translateX(4px);
-}
-
-.step-content {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-}
-
-.step-text {
-    flex: 1;
-}
-
-.step-image {
-    flex: 1;
-    max-width: 400px;
-}
-
-.step-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .process-intro h1 {
-        font-size: 2em;
-    }
-
-    .process-step {
-        padding: 20px;
-    }
-
-    .process-step h2 {
-        font-size: 1.5em;
-    }
-
-    .step-content {
-        flex-direction: column;
-    }
-
-    .step-image {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .process-container {
-        padding: 0 12px;
-        margin: 20px auto;
-    }
-
-    .process-intro {
-        margin-bottom: 30px;
-        padding: 25px 15px;
-    }
-
-    .process-intro h1 {
-        font-size: 1.6em;
-    }
-
-    .process-intro p {
-        font-size: 0.95em;
-    }
-
-    .process-step {
-        margin-bottom: 25px;
-        padding: 15px;
-    }
-
-    .process-step h2 {
-        font-size: 1.25em;
-    }
-
-    .process-step li {
-        font-size: 0.9em;
-    }
-
-    .additional-resources {
-        padding: 20px;
-    }
-}
+﻿/* 购买流程页面样式 - 暗色主题 */
+.process-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.process-intro { text-align: center; margin-bottom: 60px; padding: 40px 20px; background: linear-gradient(135deg, rgba(10,15,30,0.8), rgba(6,12,24,0.9)); border: 1px solid rgba(201,169,110,0.1); border-radius: 15px; }
+.process-intro h1 { color: #f0ede8; font-size: 2.5em; margin-bottom: 20px; font-family: "Cormorant Garamond", serif; font-weight: 300; }
+.process-intro p { color: rgba(240,237,232,0.65); font-size: 1.1em; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+.process-step { margin-bottom: 50px; padding: 30px; background: rgba(10,15,30,0.7); border: 1px solid rgba(201,169,110,0.08); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.process-step h2 { color: #c9a96e; font-size: 1.8em; margin-bottom: 20px; display: flex; align-items: center; font-family: "Noto Serif SC", serif; }
+.step-number { background: #c9a96e; color: #060c18; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 0.8em; font-family: "Montserrat", sans-serif; font-weight: 700; }
+.process-step ul { list-style: none; padding: 0; }
+.process-step li { margin-bottom: 15px; padding-left: 25px; position: relative; line-height: 1.6; color: rgba(240,237,232,0.65); }
+.process-step li:before { content: "\2022"; color: #c9a96e; font-size: 1.5em; position: absolute; left: 0; top: -2px; }
+.additional-resources { background: rgba(10,15,30,0.6); border: 1px solid rgba(201,169,110,0.08); padding: 30px; border-radius: 15px; margin-top: 50px; }
+.additional-resources h3 { color: #f0ede8; margin-bottom: 20px; font-family: "Noto Serif SC", serif; }
+.additional-resources ul { list-style: none; padding: 0; }
+.additional-resources li { margin-bottom: 10px; padding-left: 25px; position: relative; color: rgba(240,237,232,0.65); }
+.additional-resources li:before { content: "\2192"; color: #c9a96e; position: absolute; left: 0; }
+.service-btn { display: inline-flex; align-items: center; padding: 8px 16px; margin-left: 15px; background: #c9a96e; color: #060c18; text-decoration: none; border-radius: 6px; font-size: 0.9em; transition: all 0.3s ease; font-family: "Montserrat", sans-serif; font-weight: 600; }
+.service-btn:hover { background: #e8c98a; transform: translateY(-2px); }
+.service-btn .arrow { margin-left: 8px; transition: transform 0.3s ease; }
+.service-btn:hover .arrow { transform: translateX(4px); }
+.step-content { display: flex; gap: 30px; align-items: flex-start; }
+.step-text { flex: 1; }
+.step-image { flex: 1; max-width: 400px; }
+.step-image img { width: 100%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+@media (max-width: 768px) { .process-intro h1 { font-size: 2em; } .process-step { padding: 20px; } .process-step h2 { font-size: 1.5em; } .step-content { flex-direction: column; } .step-image { max-width: 100%; } }
+@media (max-width: 480px) { .process-container { padding: 0 12px; margin: 20px auto; } .process-intro { margin-bottom: 30px; padding: 25px 15px; } .process-intro h1 { font-size: 1.6em; } .process-intro p { font-size: 0.95em; } .process-step { margin-bottom: 25px; padding: 15px; } .process-step h2 { font-size: 1.25em; } .process-step li { font-size: 0.9em; } .additional-resources { padding: 20px; } }
