@@ -38,4 +38,177 @@ section h2 { color: #f0ede8; font-size: 2em; margin-bottom: 30px; text-align: ce
 .buying-guide-cta p { font-size: 1.1rem; margin: 15px 0; opacity: 0.9; color: rgba(240,237,232,0.65); }
 .buying-guide-cta .btn { display: inline-block; margin-top: 15px; padding: 12px 28px; background: #c9a96e; color: #060c18; text-decoration: none; border-radius: 25px; font-size: 1.1rem; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease; }
 .buying-guide-cta .btn:hover { background: #e8c98a; transform: translateY(-2px); }
+
+/* ===== 探险游艇精品航线推荐 ===== */
+.premium-routes-section { max-width: 1000px; margin: 0 auto; padding: 0 20px 60px; }
+
+.routes-eyebrow {
+    text-align: center; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(201,169,110,0.6); margin-bottom: 12px; font-family: "Montserrat", sans-serif;
+}
+.routes-main-title {
+    text-align: center; font-size: 2.2rem; color: #f0ede8;
+    font-family: "Cormorant Garamond", serif; font-weight: 400; margin-bottom: 10px;
+}
+.routes-subtitle {
+    text-align: center; font-size: 1.15rem; color: #c9a96e;
+    font-family: "Noto Serif SC", serif; margin-bottom: 24px;
+}
+.routes-intro {
+    text-align: center; max-width: 760px; margin: 0 auto 50px;
+    color: rgba(240,237,232,0.6); line-height: 1.9; font-size: 0.95rem;
+}
+
+/* 航线列表 */
+.routes-list { display: flex; flex-direction: column; gap: 36px; }
+
+/* 单条航线卡片 */
+.route-card {
+    background: rgba(10,15,30,0.55); border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 14px; overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.route-card:hover {
+    border-color: rgba(201,169,110,0.25);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* 卡片头部 */
+.route-card-header {
+    display: flex; align-items: center; gap: 18px;
+    padding: 28px 30px 0;
+}
+.route-number {
+    flex-shrink: 0; width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; color: #060c18;
+    background: linear-gradient(135deg, #c9a96e, #e8c98a);
+    border-radius: 50%; font-family: "Montserrat", sans-serif;
+}
+.route-card-titles { flex: 1; }
+.route-name {
+    font-size: 1.35rem; color: #f0ede8; margin: 0 0 4px;
+    font-family: "Noto Serif SC", serif; font-weight: 600;
+}
+.route-tagline {
+    font-size: 0.95rem; color: rgba(201,169,110,0.8); margin: 0;
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+}
+
+/* 卡片主体 */
+.route-card-body { padding: 20px 30px 28px; }
+
+/* 航行路线 */
+.route-itinerary { margin-bottom: 18px; }
+.route-itinerary h4 {
+    font-size: 0.85rem; color: rgba(201,169,110,0.7);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin: 0 0 8px; font-family: "Montserrat", sans-serif; font-weight: 500;
+}
+.route-itinerary p {
+    color: #e8c98a; font-size: 1rem; margin: 0; line-height: 1.7;
+    font-weight: 500;
+}
+
+/* 航线描述 */
+.route-desc {
+    color: rgba(240,237,232,0.7); line-height: 1.9; font-size: 0.95rem;
+    margin: 0 0 20px;
+}
+
+/* 配置要求 */
+.route-requirements { margin-bottom: 20px; }
+.route-requirements h4 {
+    font-size: 0.85rem; color: rgba(201,169,110,0.7);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin: 0 0 10px; font-family: "Montserrat", sans-serif; font-weight: 500;
+}
+.route-requirements ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 8px;
+}
+.route-requirements li {
+    position: relative; padding-left: 20px;
+    color: rgba(240,237,232,0.65); line-height: 1.7; font-size: 0.92rem;
+}
+.route-requirements li::before {
+    content: "▸"; position: absolute; left: 0; color: #c9a96e; font-size: 0.8rem;
+}
+
+/* 基础信息标签 */
+.route-meta {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    padding-top: 18px; border-top: 1px solid rgba(201,169,110,0.08);
+}
+.meta-item {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 14px; font-size: 0.82rem;
+    background: rgba(13,34,64,0.5); border: 1px solid rgba(201,169,110,0.12);
+    border-radius: 20px; color: rgba(240,237,232,0.7);
+    font-family: "Montserrat", sans-serif;
+}
+.meta-item strong { color: #c9a96e; font-weight: 600; margin-right: 2px; }
+
+/* 收尾 CTA */
+.routes-cta {
+    margin-top: 60px; padding: 50px 30px; text-align: center;
+    background: linear-gradient(135deg, rgba(10,15,30,0.8), rgba(6,12,24,0.9));
+    border: 1px solid rgba(201,169,110,0.15); border-radius: 16px;
+}
+.routes-cta-title {
+    font-size: 1.8rem; color: #f0ede8; margin: 0 0 16px;
+    font-family: "Cormorant Garamond", serif; font-weight: 400;
+}
+.routes-cta-desc {
+    font-size: 1.1rem; color: #c9a96e; margin: 0 0 12px;
+    font-family: "Noto Serif SC", serif;
+}
+.routes-cta-detail {
+    max-width: 680px; margin: 0 auto 28px;
+    color: rgba(240,237,232,0.6); line-height: 1.8; font-size: 0.95rem;
+}
+.routes-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; background: linear-gradient(135deg, #c9a96e, #e8c98a);
+    color: #060c18; text-decoration: none; border-radius: 8px;
+    font-size: 1.05rem; font-weight: 600; transition: all 0.3s ease;
+}
+.routes-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,0.3); }
+.routes-cta-btn .arrow { transition: transform 0.3s ease; }
+.routes-cta-btn:hover .arrow { transform: translateX(4px); }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .routes-main-title { font-size: 1.8rem; }
+    .routes-subtitle { font-size: 1rem; }
+    .route-card-header { padding: 22px 20px 0; }
+    .route-card-body { padding: 16px 20px 24px; }
+    .route-number { width: 40px; height: 40px; font-size: 1rem; }
+    .route-name { font-size: 1.15rem; }
+    .route-meta { gap: 8px; }
+    .meta-item { padding: 5px 10px; font-size: 0.78rem; }
+    .routes-cta { padding: 36px 20px; }
+    .routes-cta-title { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .premium-routes-section { padding: 0 12px 40px; }
+    .routes-main-title { font-size: 1.5rem; }
+    .routes-subtitle { font-size: 0.9rem; }
+    .routes-intro { font-size: 0.88rem; margin-bottom: 36px; }
+    .route-card-header { padding: 18px 16px 0; gap: 12px; }
+    .route-card-body { padding: 14px 16px 20px; }
+    .route-number { width: 36px; height: 36px; font-size: 0.9rem; }
+    .route-name { font-size: 1.05rem; }
+    .route-tagline { font-size: 0.85rem; }
+    .route-desc { font-size: 0.88rem; }
+    .route-requirements li { font-size: 0.86rem; }
+    .route-meta { flex-direction: column; gap: 6px; }
+    .meta-item { width: fit-content; }
+    .routes-cta { padding: 28px 16px; margin-top: 40px; }
+    .routes-cta-title { font-size: 1.3rem; }
+    .routes-cta-desc { font-size: 0.95rem; }
+    .routes-cta-detail { font-size: 0.88rem; }
+    .routes-cta-btn { padding: 12px 24px; font-size: 0.95rem; }
+}
 @media (max-width: 480px) { .knowledge-main { padding-top: 80px; } .intro h1 { font-size: 1.6em; } .intro .subtitle { font-size: 1em; } .intro-text { font-size: 0.9em; } section { margin-bottom: 35px; padding: 0 12px; } section h2 { font-size: 1.5em; } .grid-item { padding: 18px; } .buying-guide-cta { padding: 24px 18px; } .buying-guide-cta h3 { font-size: 1.3rem; } .buying-guide-cta p { font-size: 0.95rem; } .buying-guide-cta .btn { padding: 10px 22px; font-size: 1rem; } }

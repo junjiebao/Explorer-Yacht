@@ -47,11 +47,10 @@
                     <li><a href="regional.html">短距探险游艇</a></li>
                 </ul>
             </li>
-            <li><a href="knowledge.html">探险游艇知识</a></li>
+            <li><a href="knowledge.html">探险精品航线</a></li>
             <li><a href="customization.html">定制改造</a></li>
             <li><a href="ebook.html">电子书</a></li>
-            <li><a href="about.html">关于我们</a></li>
-            <li><a href="contact.html">联系方式</a></li>
+            <li><a href="about.html">探险游艇服务</a></li>
         </ul>
         <button class="menu-btn" aria-label="打开菜单" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     </nav>
@@ -131,18 +130,9 @@
         </section>
     </main>
 
-    <!-- 返回首页标签 -->
-    <div class="home-tab">
-        <a href="index.html">
-            <span>⌂</span>
-            <span>首页</span>
-        </a>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const topBar = document.querySelector('.top-bar');
-            const homeTab = document.querySelector('.home-tab');
             let lastScrollY = window.scrollY;
             
             window.addEventListener('scroll', function() {
@@ -150,10 +140,8 @@
                 
                 if (currentScrollY > lastScrollY) {
                     topBar.classList.add('hidden');
-                    homeTab.classList.add('hidden');
                 } else {
                     topBar.classList.remove('hidden');
-                    homeTab.classList.remove('hidden');
                 }
                 
                 lastScrollY = currentScrollY;
@@ -212,11 +200,10 @@
                     <ul class="footer-links">
                         <li><a href="index.html">首页</a></li>
                         <li><a href="portfolio.html">游艇分类</a></li>
-                        <li><a href="knowledge.html">游艇知识</a></li>
+                        <li><a href="knowledge.html">探险精品航线</a></li>
                         <li><a href="customization.html">定制改造</a></li>
                         <li><a href="ebook.html">电子书</a></li>
-                        <li><a href="about.html">关于我们</a></li>
-                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="about.html">探险游艇服务</a></li>
                     </ul>
                 </div>
 

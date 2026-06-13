@@ -11,7 +11,7 @@
 | customization.html | 定制改造中心，含视频展示 | customization.css |
 | about.html | 关于我们（含 A/B 步骤表单） | about.css |
 | contact.html | 联系方式 | contact.css |
-| knowledge.html | 游艇知识库 | knowledge.css |
+| knowledge.html | 游艇知识库（含精品航线推荐版块） | knowledge.css |
 | circumnavigation.html | 环球探险游艇 | series.css |
 | research.html | 科考探险游艇 | series.css |
 | polar.html | 极地探险游艇 | series.css |
@@ -57,3 +57,6 @@
 - **ebook.html CTA 改为 Kdocs 直链** — 移除邮箱表单，"立即获取"直接跳转 https://www.kdocs.cn/l/cf14UpVftfVq
 - **contact.html 移除业务邮箱模块 + 阿曼联系方式** — 含所有 SEO meta/结构化数据中的 Oman 引用清理
 - **全站页脚"服务项目"→"探险游艇类别"** — 10 个 HTML 文件批量替换
+- **knowledge.html 旧模块移除** — "自持力三个方面"、"特有能力"、"其他特点"三个section全部删除
+- **新增精品航线推荐版块** — knowledge.html 新增 id="premium-routes" 版块，含6条航线卡片+CTA，样式在 knowledge.css
+- **首页新增精品航线按钮** — hero 区四按钮排列：种类→精品航线→成本计算→调研问卷，链接 knowledge.html#premium-routes

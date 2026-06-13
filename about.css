@@ -1,4 +1,4 @@
-﻿/* 关于我们页面样式 - 暗色主题 */
+﻿/* 关于我们页面样式 - 暗色主题 → 探险游艇服务页面 */
 .about-main { padding-top: 80px; background: #060c18; }
 
 .company-intro {
@@ -10,6 +10,14 @@
 .subtitle { font-size: 1.5rem; opacity: 0.9; margin-bottom: 40px; color: #c9a96e; }
 .intro-text { max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 1.8; color: rgba(240,237,232,0.7); }
 .intro-text p { color: rgba(240,237,232,0.7); margin-bottom: 20px; }
+
+/* 探险游艇专家简介（从首页移入） */
+.brand-intro-section { padding: 80px 0; background: linear-gradient(180deg, rgba(13,34,64,0.2) 0%, #060c18 100%); text-align: center; }
+.brand-intro-section .section-eyebrow { text-align: center; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(201,169,110,0.6); margin-bottom: 12px; font-family: "Montserrat", sans-serif; }
+.brand-intro-section .section-title { text-align: center; color: #f0ede8; font-size: 2.5rem; margin-bottom: 40px; font-family: "Cormorant Garamond", serif; font-weight: 300; }
+.brand-intro-section .intro-text { max-width: 860px; margin: 0 auto; font-size: 1.1rem; line-height: 1.9; color: rgba(240,237,232,0.7); }
+@media (max-width: 768px) { .brand-intro-section { padding: 60px 0; } .brand-intro-section .section-title { font-size: 2rem; } .brand-intro-section .intro-text { font-size: 1rem; } }
+@media (max-width: 480px) { .brand-intro-section { padding: 45px 0; } .brand-intro-section .section-title { font-size: 1.6rem; } .brand-intro-section .intro-text { font-size: 0.9rem; } }
 
 .our-advantages { padding: 80px 0; background: linear-gradient(180deg, rgba(13,34,64,0.2) 0%, #060c18 100%); }
 .our-advantages h2 { text-align: center; color: #f0ede8; font-size: 2.5rem; margin-bottom: 60px; font-family: "Cormorant Garamond", serif; font-weight: 300; }
@@ -131,3 +139,92 @@
 .buying-guide-cta .btn { display: inline-block; margin-top: 15px; padding: 12px 28px; background: #c9a96e; color: #060c18; text-decoration: none; border-radius: 25px; font-size: 1.1rem; font-weight: 600; font-family: "Montserrat", sans-serif; transition: background 0.3s ease, transform 0.3s ease; }
 .buying-guide-cta .btn:hover { background: #e8c98a; transform: translateY(-2px); }
 @media (max-width: 480px) { .buying-guide-section { padding: 40px 0; } .buying-guide-cta { padding: 24px 18px; margin: 0 12px; } .buying-guide-cta h3 { font-size: 1.3rem; } .buying-guide-cta p { font-size: 0.95rem; } .buying-guide-cta .btn { padding: 10px 22px; font-size: 1rem; } }
+
+/* ===== 合作流程说明 ===== */
+.cooperation-process {
+    padding: 80px 0;
+    background: linear-gradient(180deg, rgba(13,34,64,0.2) 0%, #060c18 100%);
+}
+.coop-main-title {
+    text-align: center; color: #f0ede8; font-size: 2.5rem;
+    margin-bottom: 40px; font-family: "Cormorant Garamond", serif; font-weight: 300;
+}
+
+/* 前言 */
+.coop-preamble {
+    max-width: 780px; margin: 0 auto 30px; text-align: center;
+}
+.coop-preamble p {
+    color: rgba(240,237,232,0.75); line-height: 1.9; font-size: 1rem; margin-bottom: 12px;
+}
+
+/* 引言块 */
+.coop-quote {
+    max-width: 780px; margin: 0 auto 50px; padding: 28px 32px;
+    background: rgba(201,169,110,0.06); border-left: 4px solid #c9a96e;
+    border-radius: 0 12px 12px 0; color: rgba(240,237,232,0.7);
+    font-style: italic; line-height: 1.8; font-size: 1rem;
+}
+
+/* 步骤列表 */
+.coop-steps {
+    display: flex; flex-direction: column; gap: 24px;
+    max-width: 860px; margin: 0 auto;
+}
+
+/* 单个步骤 */
+.coop-step {
+    background: rgba(10,15,30,0.55); border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 14px; overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.coop-step:hover {
+    border-color: rgba(201,169,110,0.25);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+}
+
+/* 步骤头部 */
+.coop-step-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 24px 28px 0;
+}
+.coop-step-num {
+    flex-shrink: 0; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; color: #060c18;
+    background: linear-gradient(135deg, #c9a96e, #e8c98a);
+    border-radius: 50%; font-family: "Montserrat", sans-serif;
+}
+.coop-step-header h3 {
+    font-size: 1.3rem; color: #f0ede8; margin: 0;
+    font-family: "Noto Serif SC", serif; font-weight: 600;
+}
+
+/* 步骤内容 */
+.coop-step-body { padding: 16px 28px 24px; }
+.coop-step-body p {
+    color: rgba(240,237,232,0.7); line-height: 1.9; font-size: 0.95rem; margin: 0 0 8px;
+}
+.coop-step-body p:last-child { margin-bottom: 0; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .cooperation-process { padding: 60px 0; }
+    .coop-main-title { font-size: 2rem; }
+    .coop-step-header { padding: 20px 22px 0; }
+    .coop-step-body { padding: 14px 22px 20px; }
+    .coop-step-num { width: 38px; height: 38px; font-size: 0.95rem; }
+    .coop-step-header h3 { font-size: 1.15rem; }
+}
+@media (max-width: 480px) {
+    .cooperation-process { padding: 45px 0; }
+    .coop-main-title { font-size: 1.6rem; margin-bottom: 28px; }
+    .coop-preamble p { font-size: 0.9rem; }
+    .coop-quote { padding: 20px 18px; font-size: 0.9rem; margin: 0 auto 36px; }
+    .coop-steps { gap: 16px; }
+    .coop-step-header { padding: 18px 16px 0; gap: 12px; }
+    .coop-step-body { padding: 12px 16px 18px; }
+    .coop-step-num { width: 34px; height: 34px; font-size: 0.85rem; }
+    .coop-step-header h3 { font-size: 1.05rem; }
+    .coop-step-body p { font-size: 0.88rem; }
+}
