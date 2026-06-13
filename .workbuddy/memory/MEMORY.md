@@ -6,12 +6,11 @@
 ## 网站结构
 | 页面 | 用途 | 专属 CSS |
 |------|------|---------|
-| index.html | 首页，含成本计算器 + 问卷 | index.css |
+| index.html | 首页（极限精简：Hero+页脚） | index.css |
 | portfolio.html | 游艇分类展示 | portfolio.css |
-| customization.html | 定制改造中心，含视频展示 | customization.css |
-| about.html | 关于我们（含 A/B 步骤表单） | about.css |
-| contact.html | 联系方式 | contact.css |
-| knowledge.html | 游艇知识库（含精品航线推荐版块） | knowledge.css |
+| customization.html | 定制改造中心（含成本计算器） | customization.css |
+| about.html | 探险游艇服务（含合作流程+调研问卷） | about.css |
+| knowledge.html | 探险精品航线（含6条航线推荐版块） | knowledge.css |
 | circumnavigation.html | 环球探险游艇 | series.css |
 | research.html | 科考探险游艇 | series.css |
 | polar.html | 极地探险游艇 | series.css |
@@ -21,6 +20,8 @@
 | ebook.html | 电子书推广页（探险游艇行业新宠儿） | ebook.css |
 | admin-login.html | 管理后台登录 | (内联) |
 | admin.html | 管理后台 | (内联) |
+| privacy.html | 隐私政策 | (内联) |
+| terms.html | 服务条款 | (内联) |
 
 ## 公共资源
 - **styles.css** — 全局样式 + 导航栏 + 页脚 + 侧边栏联系方式
