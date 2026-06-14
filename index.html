@@ -300,20 +300,8 @@
         <div class="video-overlay"></div>
         <!-- 添加后备背景图片 -->
         <div class="fallback-bg" style="background-image: url('images/hero-polar.webp');" role="img" aria-label="极地探险游艇在冰川海域航行"></div>
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            webkit-playsinline="true"
-            preload="none"
-            poster="images/hero-polar.webp"
-            class="hero-video"
-            aria-hidden="true"
-            onerror="this.style.display='none'; document.querySelector('.fallback-bg').style.display='block';"
-        >
-            <source src="videos/yacht-bg.mp4.mp4" type="video/mp4">
-        </video>
+        <!-- Video only loaded on desktop via JS -->
+        <div class="hero-video-container" aria-hidden="true"></div>
         <div class="hero-content">
             <p class="hero-kicker">New Yachting FZE, LLC</p>
             <h1>分享探险和远航游艇知识</h1>
@@ -356,24 +344,29 @@
             lastScrollY = currentScrollY;
         });
         
-        // Skip video on small screens to save bandwidth
+        // Lazy-load video only on desktop (saves 24MB on mobile)
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        const video = document.querySelector('.hero-video');
+        const videoContainer = document.querySelector('.hero-video-container');
         const fallback = document.querySelector('.fallback-bg');
-        if (video && fallback) {
-            if (isMobile) {
-                // Don't load video on mobile — use static WebP image
-                video.removeAttribute('autoplay');
-                video.style.display = 'none';
-                fallback.style.opacity = '1';
-            } else {
-                video.addEventListener('canplay', function() {
-                    fallback.classList.add('is-hidden');
-                }, { once: true });
-                video.addEventListener('error', function() {
-                    fallback.classList.remove('is-hidden');
-                });
-            }
+        if (!isMobile && videoContainer && fallback) {
+            const video = document.createElement('video');
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', 'true');
+            video.className = 'hero-video';
+            video.setAttribute('aria-hidden', 'true');
+            video.poster = 'images/hero-polar.webp';
+            video.innerHTML = '<source src=\"videos/yacht-bg.mp4.mp4\" type=\"video/mp4\">';
+            videoContainer.appendChild(video);
+            video.addEventListener('canplay', function() {
+                fallback.classList.add('is-hidden');
+            }, { once: true });
+            video.addEventListener('error', function() {
+                fallback.classList.remove('is-hidden');
+            });
         }
     });
     </script>
