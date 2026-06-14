@@ -299,15 +299,15 @@
     <div class="hero-section">
         <div class="video-overlay"></div>
         <!-- 添加后备背景图片 -->
-        <div class="fallback-bg" style="background-image: url('images/极地探险.jpg');" role="img" aria-label="极地探险游艇在冰川海域航行"></div>
-        <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
+        <div class="fallback-bg" style="background-image: url('images/hero-polar.webp');" role="img" aria-label="极地探险游艇在冰川海域航行"></div>
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
             webkit-playsinline="true"
-            preload="metadata"
-            poster="images/极地探险.jpg"
+            preload="none"
+            poster="images/hero-polar.webp"
             class="hero-video"
             aria-hidden="true"
             onerror="this.style.display='none'; document.querySelector('.fallback-bg').style.display='block';"
@@ -356,15 +356,24 @@
             lastScrollY = currentScrollY;
         });
         
+        // Skip video on small screens to save bandwidth
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
         const video = document.querySelector('.hero-video');
         const fallback = document.querySelector('.fallback-bg');
         if (video && fallback) {
-            video.addEventListener('canplay', function() {
-                fallback.classList.add('is-hidden');
-            }, { once: true });
-            video.addEventListener('error', function() {
-                fallback.classList.remove('is-hidden');
-            });
+            if (isMobile) {
+                // Don't load video on mobile — use static WebP image
+                video.removeAttribute('autoplay');
+                video.style.display = 'none';
+                fallback.style.opacity = '1';
+            } else {
+                video.addEventListener('canplay', function() {
+                    fallback.classList.add('is-hidden');
+                }, { once: true });
+                video.addEventListener('error', function() {
+                    fallback.classList.remove('is-hidden');
+                });
+            }
         }
     });
     </script>
