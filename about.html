@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
 
+        <!-- DNS prefetch -->
+    <link rel="dns-prefetch" href="//cdn.boatinternational.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Noto+Serif+SC:wght@300;400;500;600&amp;family=Montserrat:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Critical font: defer loading to prevent render-blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Noto+Serif+SC:wght@300;400;500;600&amp;family=Montserrat:wght@200;300;400;500&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Noto+Serif+SC:wght@300;400;500;600&amp;family=Montserrat:wght@200;300;400;500&amp;display=swap" rel="stylesheet"></noscript>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0f1e">
     <meta name="color-scheme" content="dark light">
@@ -45,7 +53,8 @@
     <link rel="preconnect" href="https://cdn.boatinternational.com" crossorigin>
     
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="about.css">
+    <link rel="preload" href="about.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="about.css"></noscript>
 </head>
 <body>
     <!-- 顶部小导航 -->
