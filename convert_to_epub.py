@@ -26,7 +26,7 @@ from ebooklib import epub
 # ============================================================
 DOCX_PATH = r"D:\下载目录\探险游艇——游艇行业新宠儿.docx"
 OUTPUT_DIR = r"d:\GitHub works\Explorer-Yacht\output"
-INCLUDE_IMAGES = False  # Set True for images version, False for Google Books
+INCLUDE_IMAGES = True  # Set True for images version, False for Google Books
 COVER_IMAGE = r"d:\GitHub works\Explorer-Yacht\output\cover.jpg"  # Original cover art, no copyright issues
 
 BOOK_TITLE = "探险游艇——游艇行业新宠儿"
@@ -112,7 +112,7 @@ def clean_text(text):
 def create_epub(docx_path, output_dir, include_images=False):
     """Main conversion function"""
 
-    version_suffix = "with-images" if include_images else "text-only"
+    version_suffix = "含插图版" if include_images else "text-only"
     output_path = os.path.join(output_dir, f"探险游艇——游艇行业新宠儿_{version_suffix}.epub")
     os.makedirs(output_dir, exist_ok=True)
 

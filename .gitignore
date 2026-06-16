@@ -1,0 +1,4 @@
+output/*
+lh-*.json
+.claude/
+*.epub
