@@ -1,0 +1,1047 @@
+/* ============================================================
+   damen-xplorer.css — DAMEN Xplorer 60/80/100 专题页样式
+   配色: 深蓝 #0A2540 / 海洋青 #1A5B7A / 橙色 #F97316
+   ============================================================ */
+
+/* ── 页面变量 ── */
+:root {
+    --damen-deep: #0A2540;
+    --damen-deeper: #06172E;
+    --damen-teal: #1A5B7A;
+    --damen-teal-light: #2A7B9E;
+    --damen-orange: #F97316;
+    --damen-orange-hover: #FB923C;
+    --damen-light: #F0F4F8;
+    --damen-white: #FFFFFF;
+    --damen-text: rgba(240,244,248,0.85);
+    --damen-text-muted: rgba(240,244,248,0.55);
+    --damen-glow-orange: 0 0 30px rgba(249,115,22,0.25);
+}
+
+/* ── Hero 全屏沉浸式 ── */
+.damen-body {
+    background: var(--damen-deeper);
+    color: var(--damen-text);
+    overflow-x: hidden;
+}
+
+.damen-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.damen-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+.damen-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(6,23,46,0.75) 0%,
+        rgba(10,37,64,0.5) 40%,
+        rgba(6,23,46,0.8) 100%
+    );
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.15); }
+}
+
+.damen-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 960px;
+    padding: 0 24px;
+}
+
+.damen-hero-kicker {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--damen-orange);
+    margin-bottom: 20px;
+}
+
+.damen-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 300;
+    color: var(--damen-white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.damen-hero-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: rgba(240,244,248,0.8);
+    margin-bottom: 40px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.damen-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, var(--damen-orange), var(--damen-orange-hover));
+    color: var(--damen-white);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    box-shadow: var(--damen-glow-orange);
+}
+
+.damen-hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(249,115,22,0.45);
+}
+
+.damen-hero-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.damen-hero-cta:hover .arrow {
+    transform: translateX(4px);
+}
+
+.damen-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    animation: damenBounce 2s infinite;
+}
+
+.damen-scroll-indicator span {
+    color: rgba(240,244,248,0.5);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.damen-scroll-indicator .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(240,244,248,0.4), transparent);
+}
+
+@keyframes damenBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* ── 通用 section ── */
+.damen-section {
+    padding: 100px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.damen-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.damen-section-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--damen-orange);
+    margin-bottom: 12px;
+}
+
+.damen-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--damen-white);
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+
+.damen-section-desc {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--damen-text);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* ── 模块2：系列总览三卡 ── */
+.damen-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.damen-card {
+    background: linear-gradient(180deg, rgba(10,37,64,0.7), rgba(6,23,46,0.9));
+    border: 1px solid rgba(26,91,122,0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.damen-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(249,115,22,0.3);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+.damen-card-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.damen-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.damen-card:hover .damen-card-image img {
+    transform: scale(1.08);
+}
+
+.damen-card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, rgba(6,23,46,0.9));
+}
+
+.damen-card-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    padding: 6px 14px;
+    background: rgba(249,115,22,0.9);
+    color: var(--damen-white);
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.damen-card-body {
+    padding: 28px;
+}
+
+.damen-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--damen-white);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.damen-card-tagline {
+    color: var(--damen-orange);
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.damen-card-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.damen-card-spec {
+    text-align: center;
+    padding: 8px;
+    background: rgba(26,91,122,0.15);
+    border-radius: 8px;
+}
+
+.damen-card-spec .label {
+    display: block;
+    color: var(--damen-text-muted);
+    font-size: 0.65rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.damen-card-spec .value {
+    display: block;
+    color: var(--damen-white);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.damen-card-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(249,115,22,0.4);
+    color: var(--damen-orange);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.damen-card-btn:hover {
+    background: rgba(249,115,22,0.15);
+    border-color: var(--damen-orange);
+}
+
+/* ── 模块3：技术优势4栏 ── */
+.damen-tech-section {
+    background: linear-gradient(180deg, var(--damen-deeper), rgba(10,37,64,0.5), var(--damen-deeper));
+    padding: 100px 24px;
+}
+
+.damen-tech-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.damen-tech-item {
+    text-align: center;
+    padding: 40px 24px;
+    background: rgba(10,37,64,0.6);
+    border: 1px solid rgba(26,91,122,0.2);
+    border-radius: 16px;
+    transition: all 0.4s ease;
+}
+
+.damen-tech-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(249,115,22,0.25);
+    background: rgba(10,37,64,0.8);
+}
+
+.damen-tech-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(249,115,22,0.1);
+    border: 1px solid rgba(249,115,22,0.2);
+    border-radius: 50%;
+    color: var(--damen-orange);
+}
+
+.damen-tech-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.damen-tech-item h3 {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--damen-white);
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.damen-tech-item p {
+    color: var(--damen-text);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ── 模块4：分船型详情 ── */
+.damen-model-section {
+    padding: 100px 24px;
+    border-top: 1px solid rgba(26,91,122,0.15);
+}
+
+.damen-model-section:nth-child(even) {
+    background: rgba(10,37,64,0.3);
+}
+
+.damen-model-detail {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.damen-model-gallery {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.damen-gallery-main {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.damen-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.damen-gallery-main:hover img {
+    transform: scale(1.03);
+}
+
+.damen-gallery-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.damen-gallery-thumb {
+    flex: 0 0 80px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.damen-gallery-thumb:hover,
+.damen-gallery-thumb.active {
+    opacity: 1;
+    border-color: var(--damen-orange);
+}
+
+.damen-gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.damen-gallery-expand {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: rgba(6,23,46,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--damen-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.damen-gallery-expand:hover {
+    background: var(--damen-orange);
+    border-color: var(--damen-orange);
+}
+
+.damen-model-info {
+    padding: 0;
+}
+
+.damen-model-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--damen-white);
+    margin-bottom: 6px;
+    font-weight: 300;
+}
+
+.damen-model-subtitle {
+    color: var(--damen-teal-light);
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+
+.damen-model-desc {
+    color: var(--damen-text);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* ── 参数表格 ── */
+.damen-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.damen-specs-table tr {
+    border-bottom: 1px solid rgba(26,91,122,0.12);
+}
+
+.damen-specs-table tr:last-child {
+    border-bottom: none;
+}
+
+.damen-specs-table td {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.damen-specs-table td:first-child {
+    color: var(--damen-text-muted);
+    font-weight: 400;
+    width: 35%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.damen-specs-table td:last-child {
+    color: var(--damen-white);
+    font-weight: 500;
+}
+
+.damen-deck-info {
+    background: rgba(26,91,122,0.08);
+    border-left: 3px solid var(--damen-teal);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.damen-deck-info h4 {
+    color: var(--damen-white);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-family: 'Noto Serif SC', serif;
+}
+
+.damen-deck-info p {
+    color: var(--damen-text);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.damen-model-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--damen-orange), var(--damen-orange-hover));
+    color: var(--damen-white);
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+
+.damen-model-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(249,115,22,0.35);
+}
+
+/* ── 模块5：内饰定制 ── */
+.damen-interior-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.damen-interior-card {
+    background: rgba(10,37,64,0.6);
+    border: 1px solid rgba(26,91,122,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.damen-interior-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(249,115,22,0.2);
+}
+
+.damen-interior-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.damen-interior-body {
+    padding: 24px;
+}
+
+.damen-interior-body h4 {
+    color: var(--damen-white);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-family: 'Noto Serif SC', serif;
+}
+
+.damen-interior-body .studio {
+    color: var(--damen-teal-light);
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.damen-interior-body p {
+    color: var(--damen-text);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ── 模块6：航行案例 ── */
+.damen-scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.damen-scenario-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 380px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.damen-scenario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.damen-scenario-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.damen-scenario-card:hover img {
+    transform: scale(1.08);
+}
+
+.damen-scenario-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 24px 24px;
+    background: linear-gradient(180deg, transparent, rgba(6,23,46,0.95));
+}
+
+.damen-scenario-overlay h4 {
+    color: var(--damen-white);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-family: 'Noto Serif SC', serif;
+}
+
+.damen-scenario-overlay p {
+    color: var(--damen-text);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.damen-scenario-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background: rgba(249,115,22,0.2);
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--damen-orange);
+    backdrop-filter: blur(8px);
+}
+
+/* ── 模块7：底部咨询 ── */
+.damen-cta-section {
+    background: linear-gradient(135deg, var(--damen-deeper) 0%, rgba(10,37,64,0.95) 50%, var(--damen-deeper) 100%);
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.damen-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(249,115,22,0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.damen-cta-container {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.damen-cta-container .damen-section-title {
+    text-align: center;
+}
+
+.damen-cta-form {
+    background: rgba(10,37,64,0.6);
+    border: 1px solid rgba(26,91,122,0.2);
+    border-radius: 16px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+}
+
+.damen-form-row {
+    margin-bottom: 20px;
+}
+
+.damen-form-row label {
+    display: block;
+    color: var(--damen-text);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.damen-form-row input,
+.damen-form-row select,
+.damen-form-row textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(6,23,46,0.7);
+    border: 1px solid rgba(26,91,122,0.3);
+    border-radius: 8px;
+    color: var(--damen-white);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.damen-form-row input:focus,
+.damen-form-row select:focus,
+.damen-form-row textarea:focus {
+    outline: none;
+    border-color: var(--damen-orange);
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+}
+
+.damen-form-row textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.damen-form-row select option {
+    background: var(--damen-deeper);
+    color: var(--damen-white);
+}
+
+.damen-form-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--damen-orange), var(--damen-orange-hover));
+    color: var(--damen-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.damen-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(249,115,22,0.35);
+}
+
+/* ── 图片预览 Modal ── */
+.damen-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.damen-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.damen-lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.damen-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: var(--damen-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.damen-lightbox-close:hover {
+    background: var(--damen-orange);
+    border-color: var(--damen-orange);
+}
+
+/* ── 客服成功提示 Toast ── */
+.damen-toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    z-index: 10000;
+    padding: 28px 36px;
+    background: linear-gradient(135deg, var(--damen-teal), var(--damen-deep));
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 16px;
+    color: var(--damen-white);
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    max-width: 460px;
+    width: 90%;
+}
+
+.damen-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.damen-toast .toast-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.damen-toast-msg {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    color: rgba(255,255,255,0.95);
+}
+
+.damen-toast-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(249,115,22,0.3);
+    margin: 0 auto 16px;
+}
+
+.damen-toast-fallback-text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 14px;
+}
+
+.damen-toast-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.damen-toast-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+}
+
+.damen-toast-btn-wa {
+    background: #25D366;
+    color: #fff;
+}
+
+.damen-toast-btn-wa:hover {
+    background: #20BD5A;
+    transform: translateY(-1px);
+}
+
+.damen-toast-btn-wx {
+    background: rgba(255,255,255,0.12);
+    color: var(--damen-white);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.damen-toast-btn-wx:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+}
+
+.damen-toast-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.damen-toast-copied {
+    font-size: 0.75rem;
+    color: var(--damen-orange);
+    margin-top: 8px;
+    display: none;
+}
+
+.damen-toast-copied.show {
+    display: block;
+}
+
+/* ── 数据动画 ── */
+.damen-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.damen-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.damen-animate-delay-1 { transition-delay: 0.1s; }
+.damen-animate-delay-2 { transition-delay: 0.2s; }
+.damen-animate-delay-3 { transition-delay: 0.3s; }
+.damen-animate-delay-4 { transition-delay: 0.4s; }
+
+/* ── 响应式 ── */
+@media (max-width: 1024px) {
+    .damen-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+    .damen-tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .damen-model-detail { grid-template-columns: 1fr; gap: 30px; }
+    .damen-interior-grid { grid-template-columns: repeat(2, 1fr); }
+    .damen-scenarios-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .damen-hero { height: 90vh; min-height: 600px; }
+    .damen-hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .damen-section { padding: 60px 16px; }
+    .damen-tech-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .damen-tech-item { padding: 24px 16px; }
+    .damen-tech-section { padding: 60px 16px; }
+    .damen-card-image { height: 200px; }
+    .damen-gallery-main { height: 300px; }
+    .damen-interior-grid { grid-template-columns: 1fr; }
+    .damen-scenarios-grid { grid-template-columns: 1fr; }
+    .damen-scenario-card { height: 300px; }
+    .damen-cta-form { padding: 24px; }
+    .damen-cta-section { padding: 60px 16px; }
+    .damen-hero-cta { padding: 14px 28px; font-size: 0.95rem; }
+    .damen-specs-table td { padding: 10px 12px; font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    .damen-hero { height: 80vh; min-height: 500px; }
+    .damen-section-title { font-size: 1.8rem; }
+    .damen-tech-grid { grid-template-columns: 1fr; }
+    .damen-gallery-main { height: 240px; }
+    .damen-card-body { padding: 20px; }
+    .damen-card-title { font-size: 1.3rem; }
+    .damen-model-name { font-size: 1.6rem; }
+    .damen-specs-table td { padding: 8px 10px; font-size: 0.75rem; }
+    .damen-specs-table td:first-child { width: 40%; }
+    .damen-cta-form { padding: 20px; }
+}
