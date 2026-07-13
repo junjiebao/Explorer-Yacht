@@ -1006,6 +1006,42 @@
 .damen-animate-delay-3 { transition-delay: 0.3s; }
 .damen-animate-delay-4 { transition-delay: 0.4s; }
 
+/* ── 视频展示模块 ── */
+.damen-video-section {
+    padding: 80px 24px;
+    background: linear-gradient(180deg,
+        var(--damen-deeper) 0%,
+        rgba(10,37,64,0.6) 50%,
+        var(--damen-deeper) 100%
+    );
+}
+
+.damen-video-container {
+    max-width: 1080px;
+    margin: 40px auto 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(249,115,22,0.15),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 80px rgba(26,91,122,0.1);
+    background: #000;
+    line-height: 0;
+}
+
+.damen-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+.damen-video:focus-visible {
+    outline: 2px solid var(--damen-orange);
+    outline-offset: -2px;
+}
+
 /* ── 响应式 ── */
 @media (max-width: 1024px) {
     .damen-overview-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1031,6 +1067,8 @@
     .damen-cta-section { padding: 60px 16px; }
     .damen-hero-cta { padding: 14px 28px; font-size: 0.95rem; }
     .damen-specs-table td { padding: 10px 12px; font-size: 0.8rem; }
+    .damen-video-section { padding: 50px 16px; }
+    .damen-video-container { margin-top: 28px; border-radius: 10px; }
 }
 
 @media (max-width: 480px) {
