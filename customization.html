@@ -871,6 +871,11 @@
     <script src="aos-simple.js"></script>
     <script src="customization.js"></script>
     <script>
+    // ─── API 端点配置 ─────────────────────────────────
+    // EdgeOne Makers 部署后替换下方的地址
+    const API_BASE = ''; // 例如: 'https://xxxx.edgeone.app'
+    const API_URL = API_BASE + '/api/contact';
+
     // 页面滚动效果
     document.addEventListener('DOMContentLoaded', function() {
         const topBar = document.querySelector('.top-bar');
@@ -908,7 +913,7 @@
         data.phone = data.phone || '';
 
         try {
-            const res = await fetch('/api/contact', {
+            const res = await fetch(API_URL || '/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

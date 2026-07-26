@@ -615,6 +615,11 @@
     <!-- JavaScript -->
     <script src="nav.js" defer></script>
     <script>
+    // ─── API 端点配置 ─────────────────────────────────
+    // EdgeOne Makers 部署后替换下方的地址
+    const API_BASE = ''; // 例如: 'https://xxxx.edgeone.app'
+    const API_URL = API_BASE + '/api/contact';
+
     // ==================== 滚动动效 ====================
     document.addEventListener('DOMContentLoaded', function() {
         const animateElements = document.querySelectorAll('.damen-animate');
@@ -672,7 +677,7 @@
 
     // ==================== API 提交（优先 Lark，失败 fallback 到 mailto） ====================
     async function submitToApi(data) {
-        const res = await fetch('/api/contact', {
+        const res = await fetch(API_URL || '/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -721,7 +726,7 @@
             var contact = prompt('请输入您的邮箱或联系方式，接收定制手册：');
             if (contact && contact.trim()) {
                 // 先试 API
-                fetch('/api/contact', {
+                fetch(API_URL || '/api/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ source: 'damen', name: name, phone: contact, model: modelName, notes: '索取手册' })
