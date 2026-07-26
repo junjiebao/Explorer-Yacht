@@ -738,6 +738,11 @@
                     <div class="consultation-form">
                         <h3>预约专家咨询</h3>
                         <form id="consultation-form" onsubmit="handleSubmit(event)">
+                            <!-- Honeypot: 对用户不可见，机器人自动填写后被静默拒绝 -->
+                            <div style="position:absolute;left:-9999px" aria-hidden="true">
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                                <input type="text" name="_hp" tabindex="-1" autocomplete="off">
+                            </div>
                             <div class="form-group">
                                 <label for="name">姓名 *</label>
                                 <input type="text" id="name" name="name" required>
@@ -892,24 +897,48 @@
         }
     }
 
-    // 处理表单提交
-    function handleSubmit(event) {
+    // 处理表单提交（优先 API → Lark，失败 fallback 到 mailto）
+    async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        
-        // 构建邮件内容
-        const subject = encodeURIComponent('探险游艇定制咨询');
-        const body = encodeURIComponent(`
-            姓名：${data.name}
-            电话：${data.phone}
-            邮箱：${data.email}
-            意向途径：${data.approach === 'new-build' ? '全新定制' : data.approach === 'conversion' ? '二手改造' : '都想了解'}
-            简要需求：${data.requirements}
-        `);
-        
-        // 发送邮件
-        window.location.href = `mailto:BUILD@tanxianyouting.com?subject=${subject}&body=${body}`;
+        data.source = 'customize';
+        data.model = data.approach === 'new-build' ? '全新定制' : data.approach === 'conversion' ? '二手改造' : '都想了解';
+        data.notes = data.requirements;
+        data.phone = data.phone || '';
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (!result.ok && result.fallback) throw new Error('fallback');
+            showAlert('✓ 提交成功！我们的专家将在 24 小时内与您联系。', 'success');
+            event.target.reset();
+        } catch (e) {
+            // API 不可用 → mailto 兜底
+            const subject = encodeURIComponent('探险游艇定制咨询');
+            const body = encodeURIComponent(`
+                姓名：${data.name}
+                电话：${data.phone}
+                邮箱：${data.email}
+                意向途径：${data.model}
+                简要需求：${data.requirements}
+            `);
+            window.location.href = `mailto:BUILD@tanxianyouting.com?subject=${subject}&body=${body}`;
+            showAlert('✓ 已为您打开邮件客户端，发送后我们将尽快联系您。', 'success');
+        }
+    }
+
+    function showAlert(msg, type) {
+        // 复用已有的 Toast 风格通知
+        const toast = document.createElement('div');
+        toast.style.cssText = 'position:fixed;top:100px;left:50%;transform:translateX(-50%);z-index:10000;padding:20px 40px;background:linear-gradient(135deg,#1a5f7a,#0a2540);border:1px solid rgba(249,115,22,0.3);border-radius:12px;color:#fff;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.5);font-size:1.05rem;max-width:460px;';
+        toast.textContent = msg;
+        document.body.appendChild(toast);
+        setTimeout(function() { toast.remove(); }, 4000);
     }
 
     // 视频错误处理

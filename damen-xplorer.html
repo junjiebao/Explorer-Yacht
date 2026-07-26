@@ -480,6 +480,11 @@
             </div>
             <div class="damen-cta-form damen-animate">
                 <form id="damen-contact-form" onsubmit="handleDamenSubmit(event)">
+                    <!-- Honeypot: 对用户不可见，机器人自动填写后被静默拒绝 -->
+                    <div style="position:absolute;left:-9999px" aria-hidden="true">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        <input type="text" name="_hp" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="damen-form-row">
                         <label for="damen-name">姓名 *</label>
                         <input type="text" id="damen-name" name="name" required placeholder="请输入您的姓名">
@@ -665,15 +670,20 @@
         if (e.key === 'Escape') closeLightbox();
     });
 
-    // ==================== 表单提交 ====================
-    function handleDamenSubmit(event) {
-        event.preventDefault();
-        var form = event.target;
-        var formData = new FormData(form);
-        var data = Object.fromEntries(formData);
+    // ==================== API 提交（优先 Lark，失败 fallback 到 mailto） ====================
+    async function submitToApi(data) {
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (!result.ok && result.fallback) throw new Error('fallback');
+        return result;
+    }
 
-        // 构建邮件内容
-        var subject = encodeURIComponent('DAMEN Xplorer 探险游艇咨询 - ' + (data.model || '未选择'));
+    function mailtoFallback(data, subjectPrefix) {
+        var subject = encodeURIComponent((subjectPrefix || 'DAMEN Xplorer 探险游艇咨询') + ' - ' + (data.model || '未选择'));
         var body = encodeURIComponent(
             '姓名：' + (data.name || '') + '\n' +
             '联系方式：' + (data.phone || '') + '\n' +
@@ -681,13 +691,27 @@
             '意向船型：' + (data.model || '') + '\n' +
             '需求备注：' + (data.notes || '')
         );
-
-        // 发送邮件
         window.location.href = 'mailto:BUILD@tanxianyouting.com?subject=' + subject + '&body=' + body;
+    }
 
-        // 显示成功提示
-        showDamenToast('✓ 提交成功！我们的探险游艇专家将在 24 小时内与您联系。');
-        form.reset();
+    // ==================== DAMEN 咨询表单 ====================
+    async function handleDamenSubmit(event) {
+        event.preventDefault();
+        var form = event.target;
+        var formData = new FormData(form);
+        var data = Object.fromEntries(formData);
+        data.source = 'damen';
+
+        try {
+            await submitToApi(data);
+            showDamenToast('✓ 提交成功！我们的探险游艇专家将在 24 小时内与您联系。');
+            form.reset();
+        } catch (e) {
+            // API 不可用 → mailto 兜底
+            mailtoFallback(data);
+            showDamenToast('✓ 已为您打开邮件客户端，发送后我们将尽快联系您。');
+            form.reset();
+        }
     }
 
     // ==================== 获取手册表单（简易弹窗） ====================
@@ -696,6 +720,14 @@
         if (name && name.trim()) {
             var contact = prompt('请输入您的邮箱或联系方式，接收定制手册：');
             if (contact && contact.trim()) {
+                // 先试 API
+                fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ source: 'damen', name: name, phone: contact, model: modelName, notes: '索取手册' })
+                }).catch(function(){});
+
+                // 同时 mailto 兜底
                 var subject = encodeURIComponent('索取 ' + modelName + ' 完整定制手册');
                 var body = encodeURIComponent('姓名：' + name + '\n联系方式：' + contact + '\n索取船型：' + modelName);
                 window.location.href = 'mailto:BUILD@tanxianyouting.com?subject=' + subject + '&body=' + body;
