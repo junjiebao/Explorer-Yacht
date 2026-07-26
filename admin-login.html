@@ -434,14 +434,41 @@
     usernameInput.addEventListener('input', clearErrors);
     passwordInput.addEventListener('input', clearErrors);
 
-    // ── 凭据配置（纯前端验证，适用于静态托管）──────────────
-    // 如需修改账号密码，直接替换下方的值
-    const ADMIN_CREDENTIALS = [
-        { username: 'admin', password: 'Explorer2026!' },
-        { username: 'newyachting', password: 'Yacht@2026' }
-    ];
+    // ── 凭据校验（SHA-256 哈希比对，密码不出现在源码中）──
+    // ⚠️ 纯静态站点无法做到绝对安全，哈希存储仅防止密码明文泄露
+    // 生产环境应配合后端 API（/api/admin/login）使用 bcrypt + JWT
+    const ADMIN_HASHES = {
+        'admin':        '0129f5ac46cdd321723def60048a86bb1348975557fe6d3b0cb9c8cb39a73e74',
+        'newyachting':  'a72a24f8a9f4aea3043ff5e70f79fe1b0d34ee5f9dcb93f4256cd0c6d871b621'
+    };
+    // 如需重置密码，用以下命令生成新哈希：
+    // echo -n "你的新密码" | sha256sum
 
-    form.addEventListener('submit', function (e) {
+    // 先尝试后端 API 登录（如果服务器在运行）
+    async function tryApiLogin(username, password) {
+        try {
+            const res = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            if (!res.ok) return null;
+            const data = await res.json();
+            if (data.token) return data;
+        } catch (e) {
+            // API 不可用（静态托管环境），走前端哈希校验
+        }
+        return null;
+    }
+
+    // SHA-256 哈希
+    async function sha256(str) {
+        const enc = new TextEncoder().encode(str);
+        const buf = await crypto.subtle.digest('SHA-256', enc);
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
         clearErrors();
 
@@ -466,34 +493,44 @@
         loginBtn.classList.add('loading');
         loginBtn.disabled = true;
 
-        // 模拟验证延迟（体验更自然）
-        setTimeout(function () {
-            const matched = ADMIN_CREDENTIALS.find(
-                c => c.username === username && c.password === password
-            );
+        // ① 先试后端 API
+        const apiResult = await tryApiLogin(username, password);
+        if (apiResult) {
+            localStorage.setItem('adminToken', apiResult.token);
+            localStorage.setItem('adminUser', apiResult.username);
+            localStorage.setItem('adminLoginTime', Date.now().toString());
+            loginSuccess();
+            return;
+        }
 
-            if (matched) {
-                // 生成简单会话 token（时间戳 + 随机数）
-                const token = btoa(username + ':' + Date.now() + ':' + Math.random().toString(36).slice(2));
-                localStorage.setItem('adminToken', token);
-                localStorage.setItem('adminUser', username);
-                localStorage.setItem('adminLoginTime', Date.now().toString());
+        // ② API 不可用 → 前端 SHA-256 哈希比对
+        const inputHash = await sha256(password);
+        const storedHash = ADMIN_HASHES[username];
+        const matched = storedHash && inputHash === storedHash;
 
-                loginBtn.style.background = 'linear-gradient(135deg, #2f855a, #38a169)';
-                loginBtn.querySelector('.btn-text').textContent = '登录成功，跳转中…';
-                loginBtn.classList.remove('loading');
-                setTimeout(function () {
-                    window.location.href = 'admin.html';
-                }, 600);
-            } else {
-                loginBtn.classList.remove('loading');
-                loginBtn.disabled = false;
-                showAlert('用户名或密码错误，请重试');
-                passwordInput.value = '';
-                passwordInput.focus();
-            }
-        }, 500);
+        if (matched) {
+            const token = btoa(username + ':' + Date.now() + ':' + Math.random().toString(36).slice(2));
+            localStorage.setItem('adminToken', token);
+            localStorage.setItem('adminUser', username);
+            localStorage.setItem('adminLoginTime', Date.now().toString());
+            loginSuccess();
+        } else {
+            loginBtn.classList.remove('loading');
+            loginBtn.disabled = false;
+            showAlert('用户名或密码错误，请重试');
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
     });
+
+    function loginSuccess() {
+        loginBtn.style.background = 'linear-gradient(135deg, #2f855a, #38a169)';
+        loginBtn.querySelector('.btn-text').textContent = '登录成功，跳转中…';
+        loginBtn.classList.remove('loading');
+        setTimeout(function () {
+            window.location.href = 'admin.html';
+        }, 600);
+    }
 
     // Enter 键提交
     document.addEventListener('keydown', function (e) {
