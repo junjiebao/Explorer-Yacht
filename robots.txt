@@ -7,12 +7,16 @@ Allow: /images/
 Allow: /videos/
 Allow: /buying guide/
 
-# 禁止访问的目录（如果有敏感文件）
+# 内部页面不对搜索引擎开放（2026-11-18 TK-0087：恢复后台页 Disallow）
+Disallow: /admin.html
+Disallow: /admin-login.html
 # Disallow: /private/
-# Disallow: /admin/
 
 # 网站地图位置
 Sitemap: https://www.tanxianyouting.com/sitemap.xml
+
+# 订阅源（RSS 2.0，供聚合器与 AI 抓取端订阅）
+Feed: https://www.tanxianyouting.com/feed.xml
 
 # 爬取延迟（可选，针对某些爬虫）
 # Crawl-delay: 1
@@ -20,12 +24,18 @@ Sitemap: https://www.tanxianyouting.com/sitemap.xml
 # 特定爬虫规则
 User-agent: Googlebot
 Allow: /
+Disallow: /admin.html
+Disallow: /admin-login.html
 
 User-agent: Baiduspider
 Allow: /
+Disallow: /admin.html
+Disallow: /admin-login.html
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin.html
+Disallow: /admin-login.html
 
 # 禁止常见的垃圾爬虫
 User-agent: AhrefsBot
