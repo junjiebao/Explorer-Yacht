@@ -12,7 +12,6 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.tanxianyouting.com/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://www.tanxianyouting.com/en/"/>
     </url>
 
     <!-- 核心服务页面 -->

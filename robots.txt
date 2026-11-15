@@ -1,11 +1,11 @@
 User-agent: *
 Allow: /
 
-# 允许所有搜索引擎访问所有内容
+# 允许所有搜索引擎访问所有内容（2026-11-18 TK-0087 跟进：删除 Allow: /buying guide/——该目录只放图片、
+# 根路径实测 404，且写法含空格会被解析成 Allow: /buying，无实际作用）
 Allow: /
 Allow: /images/
 Allow: /videos/
-Allow: /buying guide/
 
 # 内部页面不对搜索引擎开放（2026-11-18 TK-0087：恢复后台页 Disallow）
 Disallow: /admin.html
