@@ -14,9 +14,6 @@ Allow: /buying guide/
 # 网站地图位置
 Sitemap: https://www.tanxianyouting.com/sitemap.xml
 
-# 订阅源（RSS 2.0，供聚合器与 AI 抓取端订阅；2026-11-15 新增）
-# Feed: https://www.tanxianyouting.com/feed.xml
-
 # 爬取延迟（可选，针对某些爬虫）
 # Crawl-delay: 1
 
