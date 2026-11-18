@@ -122,15 +122,16 @@
 /* EXPLORER_SALE_NAV：全站注入「在售探险艇」导航入口（2026-11-18，L2） */
 (function(){
   var LINK='explorer-for-sale/', TEXT='在售探险艇';
+  function base(){ return location.pathname.indexOf('/explorer-for-sale')===0 ? '../' : ''; }
   function inject(){
     var lists=document.querySelectorAll('.nav-links');
     for(var i=0;i<lists.length;i++){
       var ul=lists[i];
-      if(ul.querySelector('a[href="'+LINK+'"]')) continue;
+      if(ul.querySelector('a[href$="explorer-for-sale/"]')) continue;
       var li=document.createElement('li');
       var a=document.createElement('a');
-      a.href=LINK; a.textContent=TEXT;
-      if(location.pathname.indexOf(LINK)>-1) a.className='current-page';
+      a.href=base()+LINK; a.textContent=TEXT;
+      if(location.pathname.indexOf('/explorer-for-sale')>-1) a.className='current-page';
       li.appendChild(a);
       var nodes=ul.children;
       if(nodes.length>1){ ul.insertBefore(li, nodes[1]); } else { ul.appendChild(li); }
