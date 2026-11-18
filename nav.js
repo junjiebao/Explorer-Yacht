@@ -140,28 +140,3 @@
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', inject); } else { inject(); }
 })();
 
-/* EXPLORER_SALE_HOME：首页入口横幅（2026-11-18，L2）。走 JS 注入，避免改动 index.html 的既有排版 */
-(function(){
-  var LINK='explorer-for-sale/';
-  function banner(){
-    if(location.pathname!=='/' && location.pathname.indexOf('index.html')<0) return;
-    if(document.querySelector('.xf-promo')) return;
-    var main=document.querySelector('main#main-content')||document.querySelector('main');
-    if(!main||!main.parentNode) return;
-    var st=document.createElement('style');
-    st.textContent='.xf-promo{padding:24px 18px;background:linear-gradient(180deg,rgba(201,169,110,.10),rgba(6,12,24,0))}'+
-     '.xf-promo .xf-wrap{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:18px 20px;background:rgba(13,22,38,.78)}'+
-     '.xf-promo h2{margin:0;font-size:clamp(18px,2.4vw,24px);color:#f0ede8}'+
-     '.xf-promo h2 span{display:block;margin-top:4px;font-size:.6em;letter-spacing:.12em;color:#c9a96e;font-weight:400}'+
-     '.xf-promo p{margin:0;color:#a8b4c0;font-size:14px;max-width:560px}'+
-     '.xf-promo a.xf-btn{display:inline-block;background:#c9a96e;color:#0b1220;font-weight:600;font-size:14px;border-radius:9px;padding:11px 20px;text-decoration:none;white-space:nowrap}'+
-     '.xf-promo a.xf-btn:hover{background:#e8c98a}';
-    document.head.appendChild(st);
-    var sec=document.createElement('section'); sec.className='xf-promo';
-    sec.innerHTML='<div class="xf-wrap"><div><h2>在售探险艇清单<span>EXPLORER YACHTS FOR SALE</span></h2>'+
-      '<p>长航与极地支持向探险艇的公开挂牌汇总，含船厂、年份、全长与标价，逐条可回原文。</p></div>'+
-      '<a class="xf-btn" href="'+LINK+'">查看在售清单</a></div>';
-    main.parentNode.insertBefore(sec, main);
-  }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', banner); } else { banner(); }
-})();
